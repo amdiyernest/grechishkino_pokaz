@@ -198,6 +198,9 @@
   @media (max-width:900px){
     .nav .links{display:none}
     .burger{display:block}
+    .nav .tel,.nav .cbox{display:none}
+    .chat{padding:0;width:52px;height:52px;justify-content:center;gap:0}
+    .chat .chat-txt{display:none}
     .roster{grid-template-columns:repeat(2,1fr)}
     .about-teaser{grid-template-columns:1fr;gap:24px}
     .about-stats{grid-template-columns:repeat(3,1fr)}
@@ -436,7 +439,7 @@
   </form>
 </div>
 
-<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span> Спросите сразу онлайн</button>
+<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span><span class="chat-txt">Спросите сразу онлайн</span></button>
 
 <script>
   // появление блоков
