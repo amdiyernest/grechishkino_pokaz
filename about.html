@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRECHISHKINO - о нас: актёрское агентство-бутик</title>
+<link rel="icon" href="assets/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#890F30;
+    --wine-deep:#6B0B25;
+    --wine-700:#7A0D2A;
+    --rose:#AC576E;
+    --wine-soft:#F7E1E8;
+    --wine-tint:#FCF3F6;
+    --paper:#FFFFFF;
+    --bg:#FAF8F7;
+    --ink:#1E1418;
+    --ink2:#4A3C41;
+    --muted:#8C7F84;
+    --line:#EEE5E8;
+    --shadow:0 18px 50px -22px rgba(94,21,38,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  a{color:inherit}
+
+  /* ---------- nav ---------- */
+  .nav-shell{position:sticky;top:0;z-index:60;padding:16px 0 0}
+  .nav{
+    background:var(--paper);border:1px solid var(--line);border-radius:100px;
+    box-shadow:0 10px 34px -20px rgba(30,20,24,.35);
+    display:flex;align-items:center;gap:18px;padding:10px 12px 10px 22px;
+  }
+  .nav img.logo{height:26px;width:auto;display:block}
+  .nav .links{display:flex;gap:24px;margin:0 auto;font-size:14px;font-weight:600;color:var(--ink2)}
+  .nav .links a{text-decoration:none;transition:color .15s}
+  .nav .links a:hover,.nav .links a.on{color:var(--wine)}
+  .nav .links .drop{position:relative;display:flex;align-items:center}
+  .nav .links .drop::after{content:"";position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+  .nav .menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;min-width:360px;opacity:0;visibility:hidden;transition:.18s;display:grid;grid-template-columns:1fr 1fr;gap:2px 14px;z-index:5}
+  .nav .menu.one{grid-template-columns:1fr;min-width:230px}
+  .nav .drop:hover .menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav .menu a{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 10px;border-radius:9px;white-space:nowrap;text-decoration:none}
+  .nav .menu a:hover{background:var(--wine-tint);color:var(--wine)}
+  .nav .tel{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;text-decoration:none;color:var(--ink);white-space:nowrap;transition:color .15s}
+  .nav .tel:hover{color:var(--wine)}
+  .nav .cta{
+    background:var(--wine);color:#fff;text-decoration:none;font-weight:700;font-size:14px;
+    padding:11px 20px;border-radius:100px;transition:background .15s,transform .15s;white-space:nowrap;border:0;cursor:pointer;font-family:inherit;
+  }
+  .nav .cta:hover{background:var(--wine-deep);transform:translateY(-1px)}
+
+  .cbox{position:relative}
+  .cmenu{position:absolute;top:calc(100% + 14px);right:0;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;min-width:262px;display:none;z-index:70}
+  .cmenu.open{display:block}
+  .cmenu a{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;font-weight:600;color:var(--ink2);padding:10px 12px;border-radius:11px}
+  .cmenu a:hover{background:var(--wine-tint);color:var(--wine)}
+  .cmenu a small{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);font-weight:400}
+
+  .burger{display:none;border:0;background:none;cursor:pointer;padding:8px;margin-left:auto}
+  .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;margin:4px 0;transition:.2s}
+  .m-menu{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);margin-top:10px;padding:14px}
+  .m-menu.open{display:block}
+  .m-menu a{display:block;text-decoration:none;font-size:15px;font-weight:600;color:var(--ink2);padding:11px 12px;border-radius:11px}
+  .m-menu a:hover{background:var(--wine-tint);color:var(--wine)}
+  .m-menu .m-contacts{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}
+  .m-menu .m-contacts a{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500}
+
+
+  /* ---------- заголовок ---------- */
+  .head{padding:36px 0 10px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--wine);margin-bottom:14px}
+  .h1{font-size:clamp(32px,4.4vw,52px);font-weight:800;line-height:1.04;letter-spacing:-.02em;max-width:20ch}
+  .h1 b{color:var(--wine);font-weight:800}
+  .lead{font-size:16.5px;color:var(--ink2);margin-top:14px;max-width:58ch}
+
+  section.block{padding:44px 0;border-top:1px solid var(--line)}
+  section.block.first{border-top:0;padding-top:30px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
+  .sec-title{font-size:24px;font-weight:800;letter-spacing:-.01em}
+  .sec-note{margin-left:auto;font-size:13px;color:var(--muted)}
+
+  /* смысловые блоки */
+  .senses{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .sense{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:26px 28px}
+  .sense h3{font-size:20px;font-weight:800;letter-spacing:-.01em}
+  .sense h3 b{color:var(--wine);font-weight:800}
+  .sense p{font-size:14.5px;color:var(--ink2);margin-top:10px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
+  .stats .cell{background:var(--wine-tint);border:1px solid var(--wine-soft);border-radius:16px;padding:16px 18px}
+  .stats .k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .stats .v{font-size:26px;font-weight:800;color:var(--wine)}
+  .stats .v small{font-size:12px;color:var(--muted);font-weight:500}
+
+  /* цитаты актёров */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .quote{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:16px}
+  .quote .qmark{font-size:44px;line-height:.6;color:var(--wine);font-weight:800;font-family:Georgia,serif}
+  .quote p{font-size:15px;color:var(--ink);line-height:1.6;flex:1}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .quote .who img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 22%}
+  .quote .who b{display:block;font-size:14px;font-weight:800}
+  .quote .who span{display:block;font-size:12px;color:var(--muted)}
+  .quote .who a{text-decoration:none}
+  .quote .who a:hover b{color:var(--wine)}
+
+  /* новые лица */
+  .xsell{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .acard{position:relative;border-radius:10px;overflow:hidden;background:#eee;box-shadow:0 10px 28px -20px rgba(30,20,24,.45);text-decoration:none;display:block}
+  .acard img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top center;display:block;transition:transform .45s}
+  .acard:hover img{transform:scale(1.05)}
+  .acard .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(180deg,transparent,rgba(20,10,14,.85));color:#fff}
+  .acard .cap b{display:block;font-size:14px;font-weight:800;line-height:1.15}
+  .acard .cap span{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.85;margin-top:3px}
+  .acard .new{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.92);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--wine)}
+
+  .btn{border:0;cursor:pointer;text-decoration:none;font-weight:700;font-size:15px;padding:14px 24px;border-radius:100px;display:inline-flex;align-items:center;gap:9px;transition:.15s}
+  .btn.primary{background:var(--wine);color:#fff}
+  .btn.primary:hover{background:var(--wine-deep);transform:translateY(-1px)}
+  .btn.ghost{background:var(--paper);border:1px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--wine);color:var(--wine)}
+
+  /* contact */
+  .clinks{display:flex;gap:10px;flex-wrap:wrap}
+  .clink{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:14px;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.3);padding:12px 18px;border-radius:100px;transition:.15s}
+  .clink:hover{background:rgba(255,255,255,.12)}
+  .clink.primary{background:#fff;color:var(--wine);border-color:#fff}
+
+  footer{background:var(--wine);color:#fff;margin-top:40px}
+  .f-cta{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;padding:44px 0 38px;border-bottom:1px solid rgba(255,255,255,.16)}
+  .f-cta h3{font-size:24px;font-weight:800}
+  .f-cta p{opacity:.85;font-size:14px;margin-top:6px}
+  .f-mid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:38px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+  .f-logo{font-size:18px;font-weight:800;letter-spacing:.18em}
+  .f-brand p{opacity:.72;font-size:13.5px;line-height:1.6;margin-top:10px;max-width:30ch}
+  .f-k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;margin-bottom:12px}
+  .f-col{display:flex;flex-direction:column;gap:9px;align-items:flex-start}
+  .f-col a,.f-col span{color:#fff;text-decoration:none;font-size:13.5px;opacity:.85;transition:opacity .15s}
+  .f-col a:hover{opacity:1;text-decoration:underline}
+  .f-legal{display:flex;justify-content:space-between;gap:8px 28px;flex-wrap:wrap;padding:20px 0 30px;font-size:12px;color:rgba(255,255,255,.62)}
+  .f-legal a{color:rgba(255,255,255,.62)}
+  .f-legal a:hover{color:#fff}
+  @media (max-width:900px){.f-mid{grid-template-columns:1fr 1fr}.f-brand{grid-column:1/-1}.f-legal{flex-direction:column}}
+  @media (max-width:560px){.f-cta h3{font-size:20px;line-height:1.2}}
+
+  .chat{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:12px;background:var(--wine);color:#fff;border-radius:100px;padding:14px 20px 14px 16px;box-shadow:0 14px 40px -12px rgba(94,21,38,.6);cursor:pointer;font-weight:700;font-size:14px;border:0;font-family:inherit}
+  .chat .ic{width:26px;height:26px;border-radius:50%;background:#fff;color:var(--wine);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .chat.inv{background:#fff;color:var(--wine);box-shadow:0 14px 40px -12px rgba(30,20,24,.4)}
+  .chat.inv .ic{background:var(--wine);color:#fff}
+
+  /* chat popup */
+  .chat-pop{position:fixed;right:22px;bottom:88px;z-index:90;width:min(372px,calc(100vw - 32px));background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 64px -18px rgba(30,20,24,.45);display:none;flex-direction:column;overflow:hidden}
+  .chat-pop.open{display:flex}
+  .ch-head{background:var(--wine);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}
+  .ch-head .t b{display:block;font-size:14.5px;font-weight:800}
+  .ch-head .t span{display:block;font-size:11.5px;opacity:.8}
+  .ch-tg{margin-left:auto;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff;font-size:12px;font-weight:700;border:1px solid rgba(255,255,255,.35);border-radius:100px;padding:6px 12px;transition:.15s;white-space:nowrap}
+  .ch-tg:hover{background:rgba(255,255,255,.14)}
+  .ch-close{border:0;background:none;color:#fff;cursor:pointer;padding:4px;opacity:.75;transition:.15s;display:flex}
+  .ch-close:hover{opacity:1}
+  .ch-body{padding:16px;background:var(--bg);display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
+  .ch-msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5}
+  .ch-msg.in{background:var(--paper);border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start;color:var(--ink)}
+  .ch-msg.out{background:var(--wine);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+  .ch-presets{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0 16px 14px;background:var(--bg)}
+  .ch-preset{border:1px solid var(--wine-soft);background:var(--paper);color:var(--wine);font-family:inherit;font-size:12.5px;font-weight:600;border-radius:100px;padding:8px 14px;cursor:pointer;transition:.15s;text-align:left}
+  .ch-preset:hover{border-color:var(--wine);background:var(--wine-tint)}
+  .ch-form{display:flex;gap:8px;padding:12px;background:var(--paper);border-top:1px solid var(--line)}
+  .ch-form input{flex:1;font-family:inherit;font-size:13.5px;padding:11px 14px;border:1px solid var(--line);border-radius:100px;background:var(--bg);outline:none;transition:border-color .15s;min-width:0}
+  .ch-form input:focus{border-color:var(--wine)}
+  .ch-send{border:0;cursor:pointer;width:40px;height:40px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;transition:.15s;flex-shrink:0}
+  .ch-send:hover{background:var(--wine-deep)}
+
+  .pagenav{position:fixed;right:26px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:50}
+  .pagenav a{width:9px;height:9px;border-radius:50%;background:#DCC9CF;transition:.15s;position:relative;display:block}
+  .pagenav a.on,.pagenav a:hover{background:var(--wine)}
+  .pagenav a span{position:absolute;right:20px;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:.15s}
+  .pagenav a:hover span{opacity:1}
+  @media (max-width:1439px){.pagenav{display:none}}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .nav .links{display:none}
+    .burger{display:block}
+    .senses{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .quotes{grid-template-columns:1fr}
+    .xsell{grid-template-columns:repeat(2,1fr)}
+    .sec-note{display:none}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 18px}
+    .nav .cta{display:none}
+    .nav .tel{font-size:12px}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-shell">
+  <div class="wrap">
+    <nav class="nav">
+      <a href="index.html"><img class="logo" src="assets/logo.png" alt="GRECHISHKINO"></a>
+      <div class="links">
+        <span class="drop"><a href="catalog.html?f=male">Актёры</a>
+          <div class="menu">
+            <a href="profile.html">Антоненко Илья</a><a href="profile.html">Миллер Владислав</a>
+            <a href="profile.html">Барышев Матвей</a><a href="profile.html">Михеев Евгений</a>
+            <a href="profile.html">Белосорочка Ефим</a><a href="profile.html">Назимов Андрей</a>
+            <a href="profile.html">Веревочкин Владимир</a><a href="profile.html">Рассомахин Павел</a>
+            <a href="profile.html">Головин Александр</a><a href="profile.html">Савельев Даниил</a>
+            <a href="profile.html">Колокольников Юрий</a>
+          </div>
+        </span>
+        <span class="drop"><a href="catalog.html?f=female">Актрисы</a>
+          <div class="menu one">
+            <a href="profile.html">Галич Маргарита</a>
+            <a href="profile.html">Домаскина Лариса</a>
+            <a href="profile.html">Мишина Анастасия</a>
+            <a href="profile.html">Уколова Анна</a>
+            <a href="profile.html">Флоринская Александра</a>
+          </div>
+        </span>
+        <a href="catalog.html?f=new">Новые лица</a>
+        <a href="about.html" class="on">О нас</a>
+        <a href="news.html">Новости</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <a class="tel" href="tel:+79057128403">+7 905 712 84 03</a>
+      <div class="cbox">
+        <button class="cta" id="contactBtn" type="button">Связаться</button>
+        <div class="cmenu" id="contactMenu">
+          <a href="tel:+79057128403">Позвонить <small>+7 905 712 84 03</small></a>
+          <a href="https://wa.me/79099998403">WhatsApp <small>+7 909 999 84 03</small></a>
+          <a href="https://t.me/grechishkina_irina">Telegram <small>написать</small></a>
+          <a href="mailto:irina@grechishkino.ru">Почта <small>irina@grechishkino.ru</small></a>
+        </div>
+      </div>
+      <button class="burger" id="burger" type="button" aria-label="Меню"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="m-menu" id="mMenu">
+      <a href="index.html">Главная</a>
+      <a href="catalog.html?f=male">Актёры</a>
+      <a href="catalog.html?f=female">Актрисы</a>
+      <a href="catalog.html?f=new">Новые лица</a>
+      <a href="about.html">О нас</a>
+      <a href="news.html">Новости</a>
+      <a href="contacts.html">Контакты</a>
+      <div class="m-contacts">
+        <a href="tel:+79057128403">+7 905 712 84 03</a>
+        <a href="mailto:irina@grechishkino.ru">irina@grechishkino.ru</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SIDE-НАВИГАЦИЯ ПО БЛОКАМ -->
+<nav class="pagenav" aria-label="Разделы страницы">
+  <a href="#senses" class="on"><span>Как мы работаем</span></a>
+  <a href="#quotes"><span>Слова актёров</span></a>
+  <a href="#new"><span>Новые лица</span></a>
+  <a href="#contact"><span>Контакты</span></a>
+</nav>
+
+<!-- ЗАГОЛОВОК -->
+<header class="head">
+  <div class="wrap reveal">
+    <div class="eyebrow">О нас · Агентство-бутик</div>
+    <h1 class="h1">Агентство, где актёр - <b>партнёр</b>, а не строчка в базе</h1>
+    <p class="lead">Grechishkino - актёрское агентство-бутик Ирины Гречишкиной. 16 актёров кино и сериалов, с каждым работаем над ролями, бизнес-целями и стратегией. Кастинг-директорам отвечаем в режиме 24/7.</p>
+  </div>
+</header>
+
+<!-- СМЫСЛОВЫЕ БЛОКИ: конкретика вместо философии -->
+<section class="block first" id="senses">
+  <div class="wrap reveal">
+    <div class="senses">
+      <div class="sense">
+        <h3>На равных, <b>на доверии</b></h3>
+        <p>Мы сотрудничаем с актёрами как с партнёрами: каждый привносит свою часть работы в общий результат. Поэтому актёры остаются с нами и растут - в уровне проектов, значимости ролей и размере ставок.</p>
+      </div>
+      <div class="sense">
+        <h3>Пробы и материалы - <b>в тот же день</b></h3>
+        <p>Кастинг-директорам, продюсерам и режиссёрам мы отвечаем в режиме 24/7: видео-визитки, фото-образы, актуальные графики занятости. Всё, что нужно для решения, - без ожидания.</p>
+      </div>
+      <div class="sense">
+        <h3>16 актёров, <b>за каждого ручаемся</b></h3>
+        <p>Мы бутик, а не база на тысячу анкет. Каждого актёра ведём лично: знаем диапазон, сильные образы и на что он способен в кадре. Если типажа нет у нас - честно скажем.</p>
+      </div>
+      <div class="sense">
+        <h3>Всегда смотрим <b>новые лица</b></h3>
+        <p>Нам интересны новые актёры: смотрим визитки и приглашаем тех, в кого верим. Сейчас в ростере три новых лица - и у каждого уже есть проекты.</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="cell"><div class="k">Актёров</div><div class="v">16</div></div>
+      <div class="cell"><div class="k">Актёры / актрисы</div><div class="v">11 <small>+ 5</small></div></div>
+      <div class="cell"><div class="k">Новых лиц</div><div class="v">3</div></div>
+      <div class="cell"><div class="k">На связи</div><div class="v">24/7</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦИТАТЫ АКТЁРОВ (кастдев) -->
+<section class="block" id="quotes">
+  <div class="wrap reveal">
+    <div class="sec-head"><span class="sec-title">Почему актёры с нами</span><span class="sec-note">Реальные слова актёров</span></div>
+    <div class="quotes">
+      <div class="quote">
+        <span class="qmark">"</span>
+        <p>Агентство слышит, куда я хочу расти, и приносит роли под это, а не всё подряд. Это редкость на рынке.</p>
+        <div class="who">
+          <a href="profile.html"><img src="assets/actor_golovin.jpg" alt="Александр Головин"></a>
+          <a href="profile.html"><b>Александр Головин</b><span>актёр агентства</span></a>
+        </div>
+      </div>
+      <div class="quote">
+        <span class="qmark">"</span>
+        <p>Пробы уходят кастинг-директору в тот же день. Я узнаю о решении раньше, чем успеваю переволноваться.</p>
+        <div class="who">
+          <a href="profile.html"><img src="assets/actor_mishina.jpg" alt="Анастасия Мишина"></a>
+          <a href="profile.html"><b>Анастасия Мишина</b><span>актриса агентства</span></a>
+        </div>
+      </div>
+      <div class="quote">
+        <span class="qmark">"</span>
+        <p>Это партнёрство: мы вместе решаем, какие проекты брать и куда двигаться дальше. Я доверяю этим людям свою карьеру.</p>
+        <div class="who">
+          <a href="profile.html"><img src="assets/actor_belosorochka.jpg" alt="Ефим Белосорочка"></a>
+          <a href="profile.html"><b>Ефим Белосорочка</b><span>актёр агентства</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- НОВЫЕ ЛИЦА -->
+<section class="block" id="new">
+  <div class="wrap reveal">
+    <div class="sec-head"><span class="sec-title">Новые лица агентства</span><span class="sec-note">Свежие типажи, у каждого уже есть проекты</span></div>
+    <div class="xsell">
+      <a class="acard" href="profile.html"><span class="new">Новое лицо</span><img src="assets/actor_baryshev.jpg" alt="Матвей Барышев" loading="lazy"><span class="cap"><b>Матвей Барышев</b><span>22 года · 185 см</span></span></a>
+      <a class="acard" href="profile.html"><span class="new">Новое лицо</span><img src="assets/actor_galich.jpg" alt="Маргарита Галич" loading="lazy"><span class="cap"><b>Маргарита Галич</b><span>26 лет · 164 см</span></span></a>
+      <a class="acard" href="profile.html"><span class="new">Новое лицо</span><img src="assets/actor_savelyev.jpg" alt="Даниил Савельев" loading="lazy"><span class="cap"><b>Даниил Савельев</b><span>22 года · 182 см</span></span></a>
+    </div>
+    <p style="margin-top:22px"><a class="btn ghost" href="catalog.html">Весь каталог · 16 актёров -></a></p>
+  </div>
+</section>
+
+<!-- ФУТЕР: CTA + навигация + юрблок -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="f-cta">
+      <div>
+        <h3>Обсудить проект или сотрудничество</h3>
+        <p>Ирина Гречишкина, основатель агентства. Ответим в течение дня.</p>
+      </div>
+      <div class="clinks">
+        <a class="clink primary" href="tel:+79057128403">+7 905 712 84 03</a>
+        <a class="clink" href="https://t.me/grechishkina_irina">Telegram</a>
+        <a class="clink" href="https://wa.me/79099998403">WhatsApp</a>
+        <a class="clink" href="mailto:irina@grechishkino.ru">irina@grechishkino.ru</a>
+      </div>
+    </div>
+    <div class="f-mid">
+      <div class="f-brand">
+        <div class="f-logo">GRECHISHKINO</div>
+        <p>Актёрское агентство, Москва. 16 актёров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+      </div>
+      <div class="f-col">
+        <div class="f-k">Разделы</div>
+        <a href="catalog.html?f=male">Актёры</a>
+        <a href="catalog.html?f=female">Актрисы</a>
+        <a href="catalog.html?f=new">Новые лица</a>
+        <a href="about.html">О нас</a>
+        <a href="news.html">Новости</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="f-col">
+        <div class="f-k">Площадки</div>
+        <a href="https://casting.filmtoolz.ru/grechishkino/">FilmToolz</a>
+        <a href="https://rutube.ru/channel/39720543/">RuTube</a>
+        <a href="https://t.me/grechishkina_irina">Telegram</a>
+      </div>
+      <div class="f-col">
+        <div class="f-k">Контакты</div>
+        <a href="tel:+79057128403">+7 905 712 84 03</a>
+        <a href="mailto:irina@grechishkino.ru">irina@grechishkino.ru</a>
+        <span>Москва</span>
+      </div>
+    </div>
+    <div class="f-legal">
+      <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
+      <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
+      <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
+      <span>© 2026 Актёрское агентство "Гречишкино"</span>
+    </div>
+  </div>
+</footer>
+
+<div class="chat-pop" id="chatPop" role="dialog" aria-label="Чат с агентством">
+  <div class="ch-head">
+    <div class="t"><b>Чат с агентством</b><span>ответим сегодня</span></div>
+    <a class="ch-tg" href="https://t.me/grechishkina_irina"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.6 20c-.2 1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L5.9 13.5l-4.9-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.7.2 1.4 1.6z"/></svg> Написать в Telegram</a>
+    <button class="ch-close" type="button" aria-label="Закрыть чат"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <div class="ch-body" id="chatBody">
+    <div class="ch-msg in">Здравствуйте! На связи агентство Grechishkino. Напишите, кого ищете, - подскажем по ростеру и пришлём материалы.</div>
+  </div>
+  <div class="ch-presets" id="chatPresets">
+    <button class="ch-preset" type="button">Мне нужен актёр на роль...</button>
+    <button class="ch-preset" type="button">Свободен ли актёр в даты съёмок?</button>
+    <button class="ch-preset" type="button">Пришлите видео-визитку и фото</button>
+  </div>
+  <form class="ch-form" id="chatForm">
+    <input type="text" id="chatInput" placeholder="Ваш вопрос...">
+    <button class="ch-send" type="submit" aria-label="Отправить"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 11.5 21 3l-8.5 18-2.4-7.1L3 11.5z"/></svg></button>
+  </form>
+</div>
+
+<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span> Спросите сразу онлайн</button>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Инверсия кнопки чата: белеет, когда физически перекрывает бордовый футер.
+  // Проверяем реальное пересечение прямоугольников кнопки и футера -
+  // без магических чисел, работает при любой высоте окна, зуме и на мобильных.
+  const chatEl=document.querySelector('.chat'),footEl=document.querySelector('footer');
+  if(chatEl&&footEl){
+    let ticking=false;
+    const overlaps=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
+    const syncInv=()=>{
+      ticking=false;
+      chatEl.classList.toggle('inv',overlaps(chatEl.getBoundingClientRect(),footEl.getBoundingClientRect()));
+    };
+    const schedule=()=>{if(!ticking){ticking=true;requestAnimationFrame(syncInv)}};
+    addEventListener('scroll',schedule,{passive:true});
+    addEventListener('resize',schedule,{passive:true});
+    syncInv();
+  }
+
+  const burger=document.getElementById('burger'),mMenu=document.getElementById('mMenu');
+  burger.addEventListener('click',()=>mMenu.classList.toggle('open'));
+
+  const cBtn=document.getElementById('contactBtn'),cMenu=document.getElementById('contactMenu');
+  cBtn.addEventListener('click',(e)=>{e.stopPropagation();cMenu.classList.toggle('open')});
+  document.addEventListener('click',(e)=>{if(!cMenu.contains(e.target))cMenu.classList.remove('open')});
+
+  // чат: попап, пресеты до первого сообщения
+  const chatPop=document.getElementById('chatPop'),chatBody=document.getElementById('chatBody');
+  const chatPresets=document.getElementById('chatPresets'),chatInput=document.getElementById('chatInput');
+  document.getElementById('chatBtn').addEventListener('click',()=>{chatPop.classList.toggle('open');if(chatPop.classList.contains('open'))chatInput.focus()});
+  chatPop.querySelector('.ch-close').addEventListener('click',()=>chatPop.classList.remove('open'));
+  document.querySelectorAll('.ch-preset').forEach(p=>p.addEventListener('click',()=>{chatInput.value=p.textContent;chatInput.focus()}));
+  document.getElementById('chatForm').addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const text=chatInput.value.trim();
+    if(!text)return;
+    const m=document.createElement('div');m.className='ch-msg out';m.textContent=text;
+    chatBody.appendChild(m);
+    chatInput.value='';
+    chatPresets.remove();
+    chatBody.scrollTop=chatBody.scrollHeight;
+    setTimeout(()=>{
+      const r=document.createElement('div');r.className='ch-msg in';
+      r.textContent='Спасибо! Передали Ирине - ответит здесь в ближайшее время.';
+      chatBody.appendChild(r);chatBody.scrollTop=chatBody.scrollHeight;
+    },700);
+  });
+
+  const secs=[...document.querySelectorAll('section[id],header[id]')];
+  const dots=[...document.querySelectorAll('.pagenav a')];
+  const spy=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){dots.forEach(d=>d.classList.toggle('on',d.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s=>spy.observe(s));
+</script>
+</body>
+</html>
