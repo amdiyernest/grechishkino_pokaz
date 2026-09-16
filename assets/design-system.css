@@ -1,0 +1,395 @@
+:root {
+  --wine: #890f30;
+  --ink: #141414;
+  --paper: #fff;
+  --gray: #686868;
+  --line: rgba(20, 20, 20, .16);
+  --soft: rgba(20, 20, 20, .055);
+  --focus: rgba(137, 15, 48, .24);
+  --bg: var(--paper);
+  --ink2: var(--gray);
+  --muted: var(--gray);
+  --wine-deep: var(--wine);
+  --wine-soft: rgba(137, 15, 48, .12);
+  --wine-tint: rgba(137, 15, 48, .06);
+  --shadow: 0 18px 50px -28px rgba(20, 20, 20, .28);
+}
+
+::selection { background: var(--wine); color: var(--paper); }
+
+html { background: var(--paper); }
+
+body {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+  font-family: "Manrope", system-ui, sans-serif !important;
+  font-size: 16px;
+}
+
+a { text-underline-offset: .2em; }
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.wrap { max-width: 1240px !important; padding-inline: 32px !important; }
+.mono { font-family: inherit !important; }
+.eyebrow { display: none !important; }
+.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+.pagenav { display: none !important; }
+.chat { display: none !important; }
+
+/* Общая шапка: спокойная рабочая навигация вместо плавающей пилюли. */
+.nav-shell {
+  position: sticky !important;
+  top: 0;
+  z-index: 60;
+  padding: 0 !important;
+  background: rgba(255, 255, 255, .96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  min-height: 72px;
+  padding: 0 !important;
+  gap: 24px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.nav img.logo { height: 24px !important; }
+.nav .links { gap: 28px !important; color: var(--gray) !important; }
+.nav .links a { position: relative; font-size: 14px !important; }
+.nav .links a:hover,
+.nav .links a.on { color: var(--ink) !important; }
+.nav .links a.on::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 2px;
+  background: var(--wine);
+}
+
+.nav .tel {
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+}
+
+.nav .cta,
+.btn,
+.filmmore {
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.nav .cta { padding: 11px 18px !important; }
+.nav .cta:hover,
+.btn.primary:hover { background: var(--ink) !important; transform: none !important; }
+
+.nav .menu,
+.cmenu,
+.m-menu {
+  border-radius: 8px !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 18px 45px -28px rgba(20, 20, 20, .45) !important;
+}
+
+.nav .menu a,
+.cmenu a,
+.m-menu a { color: var(--gray) !important; border-radius: 4px !important; }
+.nav .menu a:hover,
+.cmenu a:hover,
+.m-menu a:hover { background: var(--soft) !important; color: var(--ink) !important; }
+.cmenu a small { font-family: inherit !important; color: var(--gray) !important; }
+
+/* Типографический ритм. */
+.head { padding: 56px 0 24px !important; }
+.h1,
+.name {
+  max-width: 16ch;
+  font-size: clamp(2.75rem, 5.5vw, 5rem) !important;
+  line-height: .98 !important;
+  letter-spacing: -.035em !important;
+}
+.lead { color: var(--gray) !important; font-size: 1rem !important; line-height: 1.65 !important; }
+section.block { padding-block: clamp(48px, 6vw, 88px) !important; }
+.sec-head { margin-bottom: 28px !important; }
+.sec-title { font-size: clamp(1.75rem, 3vw, 2.6rem) !important; letter-spacing: -.025em !important; }
+.sec-note { color: var(--gray) !important; }
+
+.tabs {
+  gap: 18px !important;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  padding: 5px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--gray) !important;
+}
+.tab.on { color: var(--wine) !important; }
+
+.filters {
+  padding: 10px 0 !important;
+  border: 0 !important;
+  border-block: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.frow + .frow { border-top: 1px solid var(--line) !important; }
+.frow { padding-block: 5px !important; }
+.flabel,
+.fcount { font-family: inherit !important; color: var(--gray) !important; }
+.fchip { border-radius: 4px !important; background: transparent !important; color: var(--gray) !important; }
+.fchip.on { background: var(--wine) !important; color: var(--paper) !important; }
+
+/* Контентные поверхности: меньше карточек, больше фотографий и чистых линий. */
+.acard,
+.ncard,
+.gallery figure,
+.poster img,
+.poster.ph .phbox {
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+.acard {
+  overflow: visible !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+}
+.acard img { border-radius: 3px; }
+.acard .cap {
+  position: static !important;
+  display: block;
+  min-height: 52px;
+  padding: 10px 0 0 !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+}
+.acard .cap b { font-size: 14px !important; line-height: 1.25 !important; }
+.acard .cap span { margin-top: 3px !important; color: var(--gray) !important; opacity: 1 !important; }
+.acard .new,
+.acard .pick,
+.acard .with { display: none !important; }
+
+.ncard { border: 0 !important; background: transparent !important; }
+.ncard .nbody { padding-inline: 0 !important; }
+.ncard .nd,
+.spec .k,
+.film-sub span,
+.filmlist .fm,
+.filmlist .fr { font-family: inherit !important; color: var(--gray) !important; }
+.acard .cap span,
+.artside .sk,
+.artside a.sl b,
+.article .ad { font-family: inherit !important; }
+.artside .sk,
+.artside a.sl b,
+.article .ad { color: var(--gray) !important; }
+.acard:hover img,
+.ncard:hover img,
+.gallery figure:hover img { transform: scale(1.02) !important; }
+.acard:hover img { transform: none !important; }
+.ncard:hover { box-shadow: none !important; }
+
+.spec .cell {
+  border: 0 !important;
+  border-top: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  padding-inline: 0 !important;
+  background: transparent !important;
+}
+
+.about-stats { gap: 0 !important; border-top: 1px solid var(--line); }
+.about-stats .cell {
+  padding: 18px 16px 18px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.about-stats .k { font-family: inherit !important; color: var(--gray) !important; font-size: 11px !important; }
+
+.socials a,
+.socials-row a {
+  font-family: inherit !important;
+  border-radius: 4px !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+/* Контакты: две ясные колонки без пустых аватаров и вложенных карточек. */
+.people { gap: 56px !important; border-top: 1px solid var(--line); }
+.person {
+  padding: 34px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.pavatar { display: none !important; }
+.person .role { font-family: inherit !important; font-size: 13px !important; letter-spacing: 0 !important; text-transform: none !important; }
+.person h2 { font-size: clamp(1.5rem, 2.5vw, 2.25rem) !important; letter-spacing: -.01em; }
+.person .rows { border-top: 1px solid var(--line); gap: 0 !important; }
+.person .row {
+  padding: 14px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.person .row .k { font-family: inherit !important; color: var(--gray) !important; font-size: 11px !important; }
+
+.cta2 { gap: 0 !important; }
+.chatline,
+.callback {
+  min-height: 100%;
+  padding: clamp(32px, 5vw, 56px) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.chatline { background: var(--ink) !important; color: var(--paper) !important; }
+.chatline .ic { display: none !important; }
+.chatline span { color: rgba(255, 255, 255, .72) !important; }
+.callback { background: var(--paper) !important; border-block: 1px solid var(--line) !important; }
+.callback p { color: var(--gray) !important; }
+.cform input[type="text"],
+.cform input[type="tel"] {
+  padding: 15px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.cform .agree { color: var(--gray) !important; }
+.socials-row { padding-block: 8px; border-block: 1px solid var(--line); }
+.socials-row a { border: 0 !important; padding: 10px 12px 10px 0 !important; }
+.footnote { color: var(--gray) !important; }
+
+/* Чат остается функциональным, но перестает выглядеть отдельным дизайн-шаблоном. */
+.chat {
+  right: 24px !important;
+  bottom: 24px !important;
+  padding: 13px 18px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 12px 30px -18px rgba(20, 20, 20, .5) !important;
+}
+.chat .ic { display: none !important; }
+.chat-pop { border-radius: 8px !important; background: var(--paper) !important; }
+.ch-body,
+.ch-presets,
+.ch-form input { background: var(--paper) !important; }
+.ch-msg,
+.ch-preset { border-radius: 6px !important; }
+.ch-preset { border-color: var(--line) !important; }
+
+footer { margin-top: 0 !important; }
+.f-k { font-family: inherit !important; font-size: 11px !important; }
+.f-cta h2 { font-size: 24px; font-weight: 800; }
+.callback h2 { font-size: 22px; font-weight: 800; }
+.acard .cap span,
+.ch-head .t span,
+.footnote { font-size: 12px !important; }
+.artside a.sl b { font-size: 11px !important; }
+[hidden] { display: none !important; }
+
+/* Главная: ростер должен начинаться в первом экране, а не после маркетинговой паузы. */
+.home-page .head { padding: 34px 0 8px !important; }
+.home-page .h1 { font-size: clamp(2.6rem, 4.8vw, 4.4rem) !important; }
+.home-page .lead { margin-top: 10px !important; max-width: 64ch; }
+.home-page .tabs { margin: 14px 0 0 !important; }
+.home-page section.block.first { padding: 24px 0 72px !important; }
+.home-page .roster,
+.catalog-page .roster { gap: 28px 12px !important; }
+.home-page #news .sec-head { margin-bottom: 20px !important; }
+.home-page #news .ncard .nbody { padding-top: 18px !important; }
+
+/* Контакты: плотнее связываем вводный текст с людьми и их способами связи. */
+.contacts-page .head { padding-bottom: 12px !important; }
+.contacts-page > section.block:first-of-type { padding-top: 32px !important; }
+.contacts-page .person { padding-block: 28px !important; }
+.contacts-page .person .role { margin-bottom: 3px !important; }
+.contacts-page .person .rows { margin-top: 14px !important; }
+
+/* Новости: подводим ленту ближе к заголовку, сохраняя воздух вокруг пояснения. */
+.news-page .head { padding-bottom: 10px !important; }
+.news-page .lead { margin-top: 16px !important; }
+.news-page > section.block:first-of-type { padding-top: 56px !important; }
+.news-page .ncard .nbody { padding-top: 18px !important; }
+
+/* Каталог сохраняет фильтры, но отдает пространство людям, а не панели управления. */
+.catalog-page .head { padding: 28px 0 8px !important; }
+.catalog-page .h1 {
+  max-width: none;
+  font-size: clamp(2.75rem, 4.7vw, 4.25rem) !important;
+}
+.catalog-page .lead {
+  max-width: 70ch;
+  margin-top: 8px !important;
+  line-height: 1.5 !important;
+}
+.catalog-page .filters {
+  margin-top: 20px !important;
+  padding-block: 6px !important;
+}
+.catalog-page .frow {
+  gap: 6px !important;
+  padding-block: 3px !important;
+}
+.catalog-page .flabel { min-width: 68px; }
+.catalog-page .fchip { padding: 6px 11px; font-size: 12px; }
+.catalog-page section.block { padding: 28px 0 64px !important; }
+
+.profile-page--limited .profile-intro { min-height: calc(82svh - 72px); }
+.profile-page--limited .profile-facts { grid-template-columns: repeat(2, minmax(120px, 180px)); }
+
+@media (max-width: 900px) {
+  .wrap { padding-inline: 22px !important; }
+  .nav { min-height: 64px; }
+  .nav > a:first-child { display: inline-flex; align-items: center; min-height: 44px; }
+  .burger { width: 44px; height: 44px; padding: 12px !important; }
+  .nav .links a.on::after { display: none; }
+  .m-menu { margin: 0 0 10px !important; }
+  section.block { padding-block: 48px !important; }
+  .people { gap: 0 !important; }
+  .person + .person { border-top: 1px solid var(--line) !important; }
+  .chat { width: auto !important; height: auto !important; padding: 12px 14px !important; }
+  .chat .chat-txt { display: inline !important; }
+}
+
+@media (max-width: 560px) {
+  .wrap { padding-inline: 18px !important; }
+  .h1, .name { font-size: clamp(2.45rem, 13vw, 4rem) !important; }
+  .chat { right: 14px !important; bottom: 14px !important; font-size: 13px !important; }
+  .f-mid { gap: 26px !important; }
+  .f-cta h2 { font-size: 20px; line-height: 1.2; }
+  .home-page .head { padding-top: 24px !important; }
+  .home-page section.block.first { padding-top: 20px !important; }
+  .tabs { gap: 12px !important; }
+  .tab { display: inline-flex; align-items: center; min-height: 40px; }
+  .catalog-page .head { padding-top: 24px !important; }
+  .catalog-page .filters { margin-top: 20px !important; }
+  .catalog-page .frow { gap: 8px !important; padding-block: 6px !important; }
+  .catalog-page .fchip { min-height: 40px; padding: 8px 12px; }
+  .catalog-page .freset { min-height: 40px; padding-inline: 8px; }
+  .contacts-page > section.block:first-of-type { padding-top: 28px !important; }
+  .news-page > section.block:first-of-type { padding-top: 32px !important; }
+  .news-page .ncard,
+  .home-page #news .ncard { align-items: start; column-gap: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

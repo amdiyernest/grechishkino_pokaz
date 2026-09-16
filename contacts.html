@@ -3,26 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRECHISHKINO - контакты актёрского агентства</title>
+<title>GRECHISHKINO - контакты актерского агентства</title>
 <link rel="icon" href="assets/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --wine:#890F30;
-    --wine-deep:#6B0B25;
-    --wine-700:#7A0D2A;
-    --rose:#AC576E;
-    --wine-soft:#F7E1E8;
-    --wine-tint:#FCF3F6;
+    --ink:#141414;
     --paper:#FFFFFF;
-    --bg:#FAF8F7;
-    --ink:#1E1418;
-    --ink2:#4A3C41;
-    --muted:#8C7F84;
-    --line:#EEE5E8;
-    --shadow:0 18px 50px -22px rgba(94,21,38,.28);
+    --gray:#686868;
+    --line:rgba(20,20,20,.16);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -85,7 +77,10 @@
   /* карточки людей */
   .people{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .person{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 30px}
-  .person .role{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);margin-bottom:10px}
+  .person .phead{display:flex;align-items:center;gap:16px}
+  .pavatar{width:60px;height:60px;border-radius:50%;flex-shrink:0;background:var(--wine-tint);border:1px dashed var(--line);display:flex;align-items:center;justify-content:center}
+  .pavatar::after{content:"фото";font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.05em;color:var(--wine)}
+  .person .role{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);margin-bottom:6px}
   .person h3{font-size:22px;font-weight:800;letter-spacing:-.01em}
   .person .rows{margin-top:18px;display:flex;flex-direction:column;gap:6px}
   .person .row{display:flex;align-items:center;gap:12px;text-decoration:none;padding:11px 14px;border-radius:12px;border:1px solid var(--line);transition:.15s;background:var(--bg)}
@@ -95,7 +90,8 @@
   .person .row:hover .v{color:var(--wine)}
 
   /* форма "заказать звонок" */
-  .callback{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+  .cta2{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+  .callback{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 30px;display:flex;flex-direction:column;gap:20px}
   .callback h3{font-size:22px;font-weight:800}
   .callback p{font-size:14.5px;color:var(--ink2);margin-top:10px;max-width:40ch}
   .cform{display:flex;flex-direction:column;gap:10px}
@@ -119,11 +115,11 @@
   .ig-note:hover::after{opacity:1}
 
   /* чат-блок */
-  .chatline{background:var(--wine-tint);border:1px solid var(--wine-soft);border-radius:22px;padding:24px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .chatline{background:var(--wine-tint);border:1px solid var(--wine-soft);border-radius:22px;padding:28px 30px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
   .chatline .ic{width:44px;height:44px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .chatline b{font-size:16px}
-  .chatline span{display:block;font-size:13px;color:var(--ink2)}
-  .chatline .btn{margin-left:auto}
+  .chatline b{font-size:18px}
+  .chatline span{display:block;font-size:13.5px;color:var(--ink2);margin-top:4px}
+  .chatline .btn{margin-top:auto}
 
   footer{background:var(--wine);color:#fff;margin-top:40px}
   .f-mid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:38px 0;border-bottom:1px solid rgba(255,255,255,.16)}
@@ -176,8 +172,7 @@
     .chat{padding:0;width:52px;height:52px;justify-content:center;gap:0}
     .chat .chat-txt{display:none}
     .people{grid-template-columns:1fr}
-    .callback{grid-template-columns:1fr;gap:20px}
-    .chatline .btn{margin-left:0}
+    .cta2{grid-template-columns:1fr}
   }
   @media (max-width:560px){
     .wrap{padding:0 18px}
@@ -188,8 +183,10 @@
   }
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
 </style>
+<link rel="stylesheet" href="assets/design-system.css">
+<script src="assets/actor-profiles.js" defer></script>
 </head>
-<body>
+<body class="contacts-page">
 
 <!-- NAV -->
 <div class="nav-shell">
@@ -197,7 +194,7 @@
     <nav class="nav">
       <a href="index.html"><img class="logo" src="assets/logo.png" alt="GRECHISHKINO"></a>
       <div class="links">
-        <span class="drop"><a href="catalog.html?f=male">Актёры</a>
+        <span class="drop"><a href="catalog.html?f=male">Актеры</a>
           <div class="menu">
             <a href="profile.html">Антоненко Илья</a><a href="profile.html">Миллер Владислав</a>
             <a href="profile.html">Барышев Матвей</a><a href="profile.html">Михеев Евгений</a>
@@ -235,7 +232,7 @@
     </nav>
     <div class="m-menu" id="mMenu">
       <a href="index.html">Главная</a>
-      <a href="catalog.html?f=male">Актёры</a>
+      <a href="catalog.html?f=male">Актеры</a>
       <a href="catalog.html?f=female">Актрисы</a>
       <a href="catalog.html?f=new">Новые лица</a>
       <a href="about.html">О нас</a>
@@ -252,9 +249,8 @@
 <!-- ЗАГОЛОВОК -->
 <header class="head">
   <div class="wrap reveal">
-    <div class="eyebrow">Контакты</div>
-    <h1 class="h1">На связи <b>24/7</b></h1>
-    <p class="lead">Телефон, почта, мессенджеры - всё кликабельно. По кастингу отвечаем в течение дня.</p>
+    <h1 class="h1">Контакты <b>агентства</b></h1>
+    <p class="lead">По вопросам проектов, занятости актеров и материалов напишите агенту или менеджеру.</p>
   </div>
 </header>
 
@@ -263,8 +259,13 @@
   <div class="wrap reveal">
     <div class="people">
       <div class="person">
-        <div class="role">Основатель и агент</div>
-        <h3>Ирина Гречишкина</h3>
+        <div class="phead">
+          <span class="pavatar" aria-hidden="true"></span>
+          <div>
+            <div class="role">Основатель и агент</div>
+            <h2>Ирина Гречишкина</h2>
+          </div>
+        </div>
         <div class="rows">
           <a class="row" href="tel:+79057128403"><span class="k">Телефон</span><span class="v">+7 905 712 84 03</span></a>
           <a class="row" href="https://wa.me/79099998403"><span class="k">WhatsApp</span><span class="v">+7 909 999 84 03</span></a>
@@ -273,10 +274,17 @@
         </div>
       </div>
       <div class="person">
-        <div class="role">Менеджер</div>
-        <h3>Александра Юрепина</h3>
+        <div class="phead">
+          <span class="pavatar" aria-hidden="true"></span>
+          <div>
+            <div class="role">Менеджер</div>
+            <h2>Александра Юрепина</h2>
+          </div>
+        </div>
         <div class="rows">
+          <a class="row" href="tel:+79057128403"><span class="k">Телефон</span><span class="v">+7 905 712 84 03</span></a>
           <a class="row" href="https://wa.me/79099998403"><span class="k">WhatsApp</span><span class="v">+7 909 999 84 03</span></a>
+          <a class="row" href="https://t.me/"><span class="k">Telegram</span><span class="v">Написать в Telegram</span></a>
           <a class="row" href="mailto:irina@grechishkino.ru"><span class="k">Почта</span><span class="v">irina@grechishkino.ru</span></a>
         </div>
       </div>
@@ -284,34 +292,30 @@
   </div>
 </section>
 
-<!-- ЧАТ -->
+<!-- СВЯЗЬ: спросить онлайн + заказать звонок в один ряд -->
 <section class="block" style="padding-top:0">
   <div class="wrap reveal">
-    <div class="chatline">
-      <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span>
-      <div>
-        <b>Спросите сразу онлайн</b>
-        <span>Чат в углу экрана: занятость актёра, материалы, условия - без звонков и писем.</span>
+    <div class="cta2">
+      <div class="chatline">
+        <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span>
+        <div>
+          <b>Написать агентству</b>
+          <span>Укажите актера, проект и предполагаемые даты съемок. Так мы сможем ответить предметно.</span>
+        </div>
+        <button class="btn primary js-open-chat" type="button">Открыть чат</button>
       </div>
-      <button class="btn primary js-open-chat" type="button">Открыть чат</button>
-    </div>
-  </div>
-</section>
-
-<!-- ЗАКАЗАТЬ ЗВОНОК -->
-<section class="block" style="padding-top:0">
-  <div class="wrap reveal">
-    <div class="callback">
-      <div>
-        <h3>Заказать звонок</h3>
-        <p>Оставьте номер - перезвоним и подберём актёров под ваш проект.</p>
+      <div class="callback">
+        <div>
+          <h2>Заказать звонок</h2>
+          <p>Оставьте имя и номер телефона. Мы перезвоним по вашему проекту.</p>
+        </div>
+        <form class="cform" onsubmit="return false">
+          <input type="text" placeholder="Как вас зовут">
+          <input type="tel" placeholder="+7 ___ ___ __ __">
+          <label class="agree"><input type="checkbox"> Согласен на обработку персональных данных в соответствии с <a href="privacy.html">политикой конфиденциальности</a></label>
+          <button class="btn primary" type="submit">Жду звонка</button>
+        </form>
       </div>
-      <form class="cform" onsubmit="return false">
-        <input type="text" placeholder="Как вас зовут">
-        <input type="tel" placeholder="+7 ___ ___ __ __">
-        <label class="agree"><input type="checkbox"> Согласен на обработку персональных данных в соответствии с <a href="privacy.html">политикой конфиденциальности</a></label>
-        <button class="btn primary" type="submit">Жду звонка</button>
-      </form>
     </div>
   </div>
 </section>
@@ -322,9 +326,10 @@
     <div class="socials-row">
       <a href="https://casting.filmtoolz.ru/grechishkino/"><img src="assets/icon_filmtoolz.png" alt="">FilmToolz</a>
       <a href="https://rutube.ru/channel/39720543/"><img src="assets/icon_rutube.png" alt="">RuTube</a>
+      <a href="https://t.me/grechishkina_irina"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="border-radius:5px;flex-shrink:0"><path d="M21.9 4.6 18.6 20c-.2 1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L5.9 13.5l-4.9-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.7.2 1.4 1.6z"/></svg>Telegram</a>
       <a class="ig-note" href="https://www.instagram.com/grechishkino.ru/"><img src="assets/icon_instagram.png" alt="">Instagram*</a>
     </div>
-    <p class="footnote">* Instagram принадлежит Meta - организации, признанной экстремистской и запрещённой на территории РФ.</p>
+    <p class="footnote">* Instagram принадлежит Meta - организации, признанной экстремистской и запрещенной на территории РФ.</p>
   </div>
 </section>
 
@@ -334,11 +339,11 @@
     <div class="f-mid">
       <div class="f-brand">
         <div class="f-logo">GRECHISHKINO</div>
-        <p>Актёрское агентство, Москва. 16 актёров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
       </div>
       <div class="f-col">
         <div class="f-k">Разделы</div>
-        <a href="catalog.html?f=male">Актёры</a>
+        <a href="catalog.html?f=male">Актеры</a>
         <a href="catalog.html?f=female">Актрисы</a>
         <a href="catalog.html?f=new">Новые лица</a>
         <a href="about.html">О нас</a>
@@ -350,6 +355,7 @@
         <a href="https://casting.filmtoolz.ru/grechishkino/">FilmToolz</a>
         <a href="https://rutube.ru/channel/39720543/">RuTube</a>
         <a href="https://t.me/grechishkina_irina">Telegram</a>
+        <a href="https://www.instagram.com/grechishkino.ru/">Instagram*</a>
       </div>
       <div class="f-col">
         <div class="f-k">Контакты</div>
@@ -362,23 +368,24 @@
       <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
       <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
       <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
-      <span>© 2026 Актёрское агентство "Гречишкино"</span>
+      <span>* Instagram - продукт Meta, признанной экстремистской и запрещенной в РФ</span>
+      <span>© 2026 Актерское агентство "Гречишкино"</span>
     </div>
   </div>
 </footer>
 
 <div class="chat-pop" id="chatPop" role="dialog" aria-label="Чат с агентством">
   <div class="ch-head">
-    <div class="t"><b>Чат с агентством</b><span>ответим сегодня</span></div>
+    <div class="t"><b>Агентство Grechishkino</b><span>вопрос по актеру или проекту</span></div>
     <a class="ch-tg" href="https://t.me/grechishkina_irina"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.6 20c-.2 1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L5.9 13.5l-4.9-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.7.2 1.4 1.6z"/></svg> Написать в Telegram</a>
     <button class="ch-close" type="button" aria-label="Закрыть чат"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   </div>
   <div class="ch-body" id="chatBody">
-    <div class="ch-msg in">Здравствуйте! На связи агентство Grechishkino. Напишите, кого ищете, - подскажем по ростеру и пришлём материалы.</div>
+    <div class="ch-msg in">Здравствуйте! На связи агентство Grechishkino. Напишите, кого ищете, - подскажем по ростеру и пришлем материалы.</div>
   </div>
   <div class="ch-presets" id="chatPresets">
-    <button class="ch-preset" type="button">Мне нужен актёр на роль...</button>
-    <button class="ch-preset" type="button">Свободен ли актёр в даты съёмок?</button>
+    <button class="ch-preset" type="button">Мне нужен актер на роль...</button>
+    <button class="ch-preset" type="button">Свободен ли актер в даты съемок?</button>
     <button class="ch-preset" type="button">Пришлите видео-визитку и фото</button>
   </div>
   <form class="ch-form" id="chatForm">
@@ -387,7 +394,7 @@
   </form>
 </div>
 
-<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span><span class="chat-txt">Спросите сразу онлайн</span></button>
+<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span><span class="chat-txt">Написать агентству</span></button>
 
 <script>
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});

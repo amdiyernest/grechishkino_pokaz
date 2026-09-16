@@ -3,35 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRECHISHKINO - Юрий Колокольников, актёр театра и кино</title>
+<title>GRECHISHKINO - Юрий Колокольников, актер театра и кино</title>
 <link rel="icon" href="assets/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --wine:#890F30;
-    --wine-deep:#6B0B25;
-    --wine-700:#7A0D2A;
-    --rose:#AC576E;
-    --wine-soft:#F7E1E8;
-    --wine-tint:#FCF3F6;
+    --ink:#141414;
     --paper:#FFFFFF;
-    --bg:#FAF8F7;
-    --ink:#1E1418;
-    --ink2:#4A3C41;
-    --muted:#8C7F84;
-    --line:#EEE5E8;
+    --gray:#686868;
+    --line:rgba(20,20,20,.16);
     --shadow:0 18px 50px -22px rgba(94,21,38,.28);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  .mono{font-family:'IBM Plex Mono',monospace}
+  body{background:var(--paper);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .mono{font-family:inherit}
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
   a{color:inherit}
 
-  /* ---------- nav (единая, плавающая, скруглённая) ---------- */
+  /* ---------- nav (единая, плавающая, скругленная) ---------- */
   .nav-shell{position:sticky;top:0;z-index:60;padding:16px 0 0}
   .nav{
     background:var(--paper);border:1px solid var(--line);border-radius:100px;
@@ -39,7 +32,7 @@
     display:flex;align-items:center;gap:18px;padding:10px 12px 10px 22px;
   }
   .nav img.logo{height:26px;width:auto;display:block}
-  .nav .links{display:flex;gap:24px;margin:0 auto;font-size:14px;font-weight:600;color:var(--ink2)}
+  .nav .links{display:flex;gap:24px;margin:0 auto;font-size:14px;font-weight:600;color:var(--gray)}
   .nav .links a{text-decoration:none;transition:color .15s}
   .nav .links a:hover,.nav .links a.on{color:var(--wine)}
   .nav .links .drop{position:relative;display:flex;align-items:center}
@@ -47,44 +40,44 @@
   .nav .menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(6px);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;min-width:360px;opacity:0;visibility:hidden;transition:.18s;display:grid;grid-template-columns:1fr 1fr;gap:2px 14px;z-index:5}
   .nav .menu.one{grid-template-columns:1fr;min-width:230px}
   .nav .drop:hover .menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-  .nav .menu a{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 10px;border-radius:9px;white-space:nowrap;text-decoration:none}
-  .nav .menu a:hover{background:var(--wine-tint);color:var(--wine)}
-  .nav .tel{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;text-decoration:none;color:var(--ink);white-space:nowrap;transition:color .15s}
+  .nav .menu a{font-size:13px;font-weight:600;color:var(--gray);padding:8px 10px;border-radius:9px;white-space:nowrap;text-decoration:none}
+  .nav .menu a:hover{background:rgba(137,15,48,.06);color:var(--wine)}
+  .nav .tel{font-family:inherit;font-size:13px;font-weight:600;text-decoration:none;color:var(--ink);white-space:nowrap;transition:color .15s}
   .nav .tel:hover{color:var(--wine)}
   .nav .cta{
     background:var(--wine);color:#fff;text-decoration:none;font-weight:700;font-size:14px;
     padding:11px 20px;border-radius:100px;transition:background .15s,transform .15s;white-space:nowrap;border:0;cursor:pointer;font-family:inherit;
   }
-  .nav .cta:hover{background:var(--wine-deep);transform:translateY(-1px)}
+  .nav .cta:hover{background:var(--wine);transform:translateY(-1px)}
 
   .cbox{position:relative}
   .cmenu{position:absolute;top:calc(100% + 14px);right:0;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;min-width:262px;display:none;z-index:70}
   .cmenu.open{display:block}
-  .cmenu a{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;font-weight:600;color:var(--ink2);padding:10px 12px;border-radius:11px}
-  .cmenu a:hover{background:var(--wine-tint);color:var(--wine)}
-  .cmenu a small{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);font-weight:400}
+  .cmenu a{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;font-weight:600;color:var(--gray);padding:10px 12px;border-radius:11px}
+  .cmenu a:hover{background:rgba(137,15,48,.06);color:var(--wine)}
+  .cmenu a small{margin-left:auto;font-family:inherit;font-size:11px;color:var(--gray);font-weight:400}
 
   .burger{display:none;border:0;background:none;cursor:pointer;padding:8px;margin-left:auto}
   .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;margin:4px 0;transition:.2s}
   .m-menu{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);margin-top:10px;padding:14px}
   .m-menu.open{display:block}
-  .m-menu a{display:block;text-decoration:none;font-size:15px;font-weight:600;color:var(--ink2);padding:11px 12px;border-radius:11px}
-  .m-menu a:hover{background:var(--wine-tint);color:var(--wine)}
+  .m-menu a{display:block;text-decoration:none;font-size:15px;font-weight:600;color:var(--gray);padding:11px 12px;border-radius:11px}
+  .m-menu a:hover{background:rgba(137,15,48,.06);color:var(--wine)}
   .m-menu .m-contacts{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}
-  .m-menu .m-contacts a{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500}
+  .m-menu .m-contacts a{font-family:inherit;font-size:13px;font-weight:600}
 
 
   /* ---------- hero ---------- */
   .hero{padding:30px 0 20px}
 
-  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--wine);margin-bottom:14px}
+  .eyebrow{font-family:inherit;font-size:13px;font-weight:700;color:var(--wine);margin-bottom:14px}
   .name{font-size:clamp(38px,5vw,60px);font-weight:800;line-height:.98;letter-spacing:-.02em}
   .name b{color:var(--wine);font-weight:800}
-  .lead{font-size:16.5px;color:var(--ink2);margin-top:14px;max-width:48ch}
+  .lead{font-size:16.5px;color:var(--gray);margin-top:14px;max-width:48ch}
 
   /* видео - главный элемент профиля: большое активное + превью рядом */
   .videos{margin-top:20px}
-  .vmain{position:relative;border-radius:12px;overflow:hidden;display:block;aspect-ratio:16/8;box-shadow:var(--shadow);background:#1E1418 center/cover;cursor:pointer}
+  .vmain{position:relative;border-radius:12px;overflow:hidden;display:block;aspect-ratio:16/8;box-shadow:var(--shadow);background:var(--ink) center/cover;cursor:pointer}
   .vmain .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,20,24,0),rgba(30,20,24,.62))}
   .vmain .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .15s}
   .vmain:hover .play{transform:translate(-50%,-50%) scale(1.07)}
@@ -93,7 +86,7 @@
   .vmain .cap b{display:block;font-size:16px;font-weight:800}
   .vmain .cap span{font-size:12.5px;opacity:.85}
   .vthumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
-  .vth{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#2a1d22 center/cover;cursor:pointer;border:2px solid transparent;transition:border-color .15s,transform .15s;padding:0}
+  .vth{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:var(--ink) center/cover;cursor:pointer;border:2px solid transparent;transition:border-color .15s,transform .15s;padding:0}
   .vth:hover{transform:translateY(-2px)}
   .vth.on{border-color:var(--wine)}
   .vth .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,20,24,.05),rgba(30,20,24,.68))}
@@ -104,20 +97,20 @@
   /* возраст/рост - ниже видео */
   .spec{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
   .spec .cell{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:13px 15px}
-  .spec .k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .spec .k{font-family:inherit;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:5px}
   .spec .v{font-size:21px;font-weight:800}
-  .spec .v small{font-size:12px;color:var(--muted);font-weight:500}
+  .spec .v small{font-size:12px;color:var(--gray);font-weight:500}
   .spec .v.sm{font-size:14px;font-weight:700}
 
   .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;align-items:center}
   .btn{border:0;cursor:pointer;text-decoration:none;font-weight:700;font-size:15px;padding:14px 24px;border-radius:100px;display:inline-flex;align-items:center;gap:9px;transition:.15s}
   .btn.primary{background:var(--wine);color:#fff}
-  .btn.primary:hover{background:var(--wine-deep);transform:translateY(-1px)}
+  .btn.primary:hover{background:var(--wine);transform:translateY(-1px)}
   .btn.ghost{background:var(--paper);border:1px solid var(--line);color:var(--ink)}
   .btn.ghost:hover{border-color:var(--wine);color:var(--wine)}
 
   .socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-  .socials a{display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;text-decoration:none;color:var(--ink2);background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:7px 13px;transition:.15s}
+  .socials a{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:12px;font-weight:600;text-decoration:none;color:var(--gray);background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:7px 13px;transition:.15s}
   .socials a:hover{border-color:var(--wine);color:var(--wine)}
   .socials a img{width:15px;height:15px;border-radius:4px;display:block}
   .ig-note{position:relative}
@@ -128,71 +121,81 @@
   section.block{padding:44px 0;border-top:1px solid var(--line)}
   .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px}
   .sec-title{font-size:24px;font-weight:800;letter-spacing:-.01em}
-  .sec-note{margin-left:auto;font-size:13px;color:var(--muted)}
+  .sec-note{margin-left:auto;font-size:13px;color:var(--gray)}
   .sec-note a{color:var(--wine);font-weight:700;text-decoration:none}
 
   .gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-  .gallery figure{position:relative;border-radius:10px;overflow:hidden;background:#eee;box-shadow:0 10px 30px -20px rgba(30,20,24,.4)}
+  .gallery figure{position:relative;border-radius:10px;overflow:hidden;background:rgba(20,20,20,.06);box-shadow:0 10px 30px -20px rgba(20,20,20,.3)}
   .gallery img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform .45s}
   .gallery figure:hover img{transform:scale(1.05)}
   .gallery figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--wine)}
-  .morefoto{border-radius:10px;border:1px dashed #d8c3ca;background:var(--wine-tint);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;aspect-ratio:2/3;transition:.15s}
-  .morefoto:hover{border-color:var(--wine);background:var(--wine-soft)}
+  .morefoto{border-radius:10px;border:1px dashed var(--line);background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;aspect-ratio:2/3;transition:.15s}
+  .morefoto:hover{border-color:var(--wine);background:rgba(137,15,48,.06)}
   .morefoto .arr{width:56px;height:56px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:400}
   .morefoto b{font-size:13.5px;font-weight:800;color:var(--wine)}
-  .morefoto span{font-size:11.5px;color:var(--muted)}
+  .morefoto span{font-size:11.5px;color:var(--gray)}
 
   /* галерея на весь экран */
   .gbox{position:fixed;inset:0;z-index:100;background:rgba(24,12,17,.97);display:none;flex-direction:column}
   .gbox.open{display:flex}
-  .gtop{display:flex;align-items:baseline;gap:12px;padding:20px 78px 12px 26px;color:#fff}
-  .gtop b{font-size:16px;font-weight:800}
-  .gtop span{font-family:'IBM Plex Mono',monospace;font-size:12px;opacity:.6}
   .gclose{position:absolute;top:16px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;z-index:2}
   .gclose:hover{background:rgba(255,255,255,.18)}
-  .gstrip{flex:1;display:flex;align-items:center;gap:16px;overflow-x:auto;padding:6px 26px;scroll-snap-type:x proximity;scrollbar-width:none}
+  .gstrip{flex:1;display:flex;align-items:center;gap:16px;overflow-x:auto;padding:70px 26px 26px;scroll-snap-type:x proximity;scrollbar-width:none}
   .gstrip::-webkit-scrollbar{display:none}
   .gstrip img{height:min(72vh,760px);border-radius:10px;scroll-snap-align:center;flex-shrink:0;box-shadow:0 20px 60px -20px rgba(0,0,0,.8)}
-  .garr{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--wine);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s;z-index:2}
-  .garr:hover{background:#fff}
-  .garr.prev{left:18px}
-  .garr.next{right:18px}
-  .gbot{display:flex;justify-content:center;padding:14px 0 24px}
-  @media (max-width:700px){.garr{display:none}.gstrip img{height:auto;max-height:68vh;max-width:86vw}}
+  @media (max-width:700px){.gstrip img{height:auto;max-height:68vh;max-width:86vw}}
 
   /* фильмография */
-  .wall{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-  .poster{text-decoration:none;display:block}
+  .film-sub{display:flex;align-items:baseline;gap:10px;font-size:16px;font-weight:800;color:var(--ink);margin:0 0 16px}
+  .film-sub span{font-size:12.5px;font-weight:500;color:var(--gray)}
+  .wall{display:flex;flex-wrap:wrap;gap:16px}
+  .poster{text-decoration:none;display:block;width:172px}
   .poster img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:10px;box-shadow:0 12px 30px -18px rgba(30,20,24,.5);transition:transform .3s}
   .poster:hover img{transform:translateY(-5px)}
   .poster .pcap{display:block;padding:11px 2px 0}
   .poster .pcap b{display:block;font-size:14px;font-weight:800;color:var(--ink);line-height:1.15}
-  .poster .pcap span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-  .chip{font-size:12.5px;font-weight:600;border:1px solid var(--line);border-radius:100px;padding:8px 14px;background:var(--paper)}
-  .chip b{color:var(--wine)}
+  .poster .pcap span{display:block;font-size:12px;color:var(--gray);margin-top:3px}
+  /* постер-заглушка: проект без афиши (часто у раздела "Скоро") */
+  .poster.ph .phbox{display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;aspect-ratio:3/4;border-radius:10px;background:rgba(137,15,48,.06);border:1px dashed var(--line);color:var(--wine);font-weight:800;font-size:13.5px;line-height:1.25;box-shadow:0 12px 30px -18px rgba(20,20,20,.25);transition:transform .3s}
+  .poster.ph:hover .phbox{transform:translateY(-5px)}
+  /* текстовый список остальной фильмографии - компактно, как kino-teatr, но короче */
+  .filmlist{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
+  .filmlist li{display:grid;grid-template-columns:56px 1.5fr 1.3fr 1fr;gap:16px;align-items:baseline;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14px}
+  .filmlist .fy{font-family:inherit;font-size:12.5px;color:var(--wine);font-weight:700}
+  .filmlist .fn{font-weight:700;color:var(--ink)}
+  .filmlist .fm{color:var(--gray)}
+  .filmlist .fr{color:var(--gray)}
+  .filmlist li.fhide{display:none}
+  .filmlist.open li.fhide{display:grid}
+  .filmmore{margin-top:16px;border:1px solid var(--line);background:var(--paper);border-radius:100px;padding:11px 22px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--wine);cursor:pointer;transition:.15s}
+  .filmmore:hover{border-color:var(--wine);background:rgba(137,15,48,.06)}
+  @media (max-width:560px){
+    .poster{width:calc(50% - 8px)}
+    .filmlist li{grid-template-columns:52px 1fr;gap:2px 10px}
+    .filmlist .fm,.filmlist .fr{grid-column:2}
+  }
 
-  /* новости актёра - отдельный блок */
+  /* новости актера - отдельный блок */
   .newsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .ncard{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;display:block;transition:transform .2s,box-shadow .2s}
   .ncard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
   .ncard img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;display:block}
   .ncard .nbody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
-  .ncard .nd{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)}
+  .ncard .nd{font-family:inherit;font-size:11px;font-weight:600;color:var(--gray)}
   .ncard .nt{font-size:14.5px;font-weight:700;line-height:1.35;color:var(--ink)}
 
   /* кросс-сейл */
   .xsell{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .acard{position:relative;border-radius:10px;overflow:hidden;background:#eee;box-shadow:0 10px 28px -20px rgba(30,20,24,.45);text-decoration:none;display:block}
+  .acard{position:relative;border-radius:10px;overflow:hidden;background:rgba(20,20,20,.06);box-shadow:0 10px 28px -20px rgba(20,20,20,.3);text-decoration:none;display:block}
   .acard img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top center;display:block;transition:transform .45s}
   .acard:hover img{transform:scale(1.05)}
   .acard .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(180deg,transparent,rgba(20,10,14,.85));color:#fff}
   .acard .cap b{display:block;font-size:14px;font-weight:800;line-height:1.15}
-  .acard .cap span{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.85;margin-top:3px}
+  .acard .cap span{display:block;font-family:inherit;font-size:11px;font-weight:600;opacity:.85;margin-top:3px}
   .acard .pick{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--wine);font-size:15px}
   .acard .with{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.92);border-radius:100px;padding:5px 11px;font-size:10.5px;font-weight:700;color:var(--wine)}
   .xsell-foot{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center}
-  .xsell-foot .hint{font-size:13px;color:var(--muted)}
+  .xsell-foot .hint{font-size:13px;color:var(--gray)}
 
   /* contact */
   .clinks{display:flex;gap:10px;flex-wrap:wrap}
@@ -207,7 +210,7 @@
   .f-mid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;padding:38px 0;border-bottom:1px solid rgba(255,255,255,.16)}
   .f-logo{font-size:18px;font-weight:800;letter-spacing:.18em}
   .f-brand p{opacity:.72;font-size:13.5px;line-height:1.6;margin-top:10px;max-width:30ch}
-  .f-k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;margin-bottom:12px}
+  .f-k{font-family:inherit;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;margin-bottom:12px}
   .f-col{display:flex;flex-direction:column;gap:9px;align-items:flex-start}
   .f-col a,.f-col span{color:#fff;text-decoration:none;font-size:13.5px;opacity:.85;transition:opacity .15s}
   .f-col a:hover{opacity:1;text-decoration:underline}
@@ -233,22 +236,22 @@
   .ch-tg:hover{background:rgba(255,255,255,.14)}
   .ch-close{border:0;background:none;color:#fff;cursor:pointer;padding:4px;opacity:.75;transition:.15s;display:flex}
   .ch-close:hover{opacity:1}
-  .ch-body{padding:16px;background:var(--bg);display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
+  .ch-body{padding:16px;background:var(--paper);display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
   .ch-msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5}
   .ch-msg.in{background:var(--paper);border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start;color:var(--ink)}
   .ch-msg.out{background:var(--wine);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
-  .ch-presets{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0 16px 14px;background:var(--bg)}
-  .ch-preset{border:1px solid var(--wine-soft);background:var(--paper);color:var(--wine);font-family:inherit;font-size:12.5px;font-weight:600;border-radius:100px;padding:8px 14px;cursor:pointer;transition:.15s;text-align:left}
-  .ch-preset:hover{border-color:var(--wine);background:var(--wine-tint)}
+  .ch-presets{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0 16px 14px;background:var(--paper)}
+  .ch-preset{border:1px solid var(--line);background:var(--paper);color:var(--wine);font-family:inherit;font-size:12.5px;font-weight:600;border-radius:100px;padding:8px 14px;cursor:pointer;transition:.15s;text-align:left}
+  .ch-preset:hover{border-color:var(--wine);background:rgba(137,15,48,.06)}
   .ch-form{display:flex;gap:8px;padding:12px;background:var(--paper);border-top:1px solid var(--line)}
-  .ch-form input{flex:1;font-family:inherit;font-size:13.5px;padding:11px 14px;border:1px solid var(--line);border-radius:100px;background:var(--bg);outline:none;transition:border-color .15s;min-width:0}
+  .ch-form input{flex:1;font-family:inherit;font-size:13.5px;padding:11px 14px;border:1px solid var(--line);border-radius:100px;background:var(--paper);outline:none;transition:border-color .15s;min-width:0}
   .ch-form input:focus{border-color:var(--wine)}
   .ch-send{border:0;cursor:pointer;width:40px;height:40px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;transition:.15s;flex-shrink:0}
-  .ch-send:hover{background:var(--wine-deep)}
+  .ch-send:hover{background:var(--wine)}
 
   /* side-навигация по блокам страницы */
   .pagenav{position:fixed;right:26px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:50}
-  .pagenav a{width:9px;height:9px;border-radius:50%;background:#DCC9CF;transition:.15s;position:relative;display:block}
+  .pagenav a{width:9px;height:9px;border-radius:50%;background:rgba(20,20,20,.22);transition:.15s;position:relative;display:block}
   .pagenav a.on,.pagenav a:hover{background:var(--wine)}
   .pagenav a span{position:absolute;right:20px;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:7px;white-space:nowrap;opacity:0;pointer-events:none;transition:.15s}
   .pagenav a:hover span{opacity:1}
@@ -282,56 +285,48 @@
   }
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
 
-  /* ===== HERO: имя поверх, слева видео, справа листаемый фото-якорь ===== */
+  /* ===== HERO: имя поверх, слева видео, справа несколько фотографий ===== */
   .hero-head{margin-bottom:26px}
   .hero-head .name{font-size:clamp(40px,6vw,76px);line-height:.94}
   .hero-head .lead{max-width:60ch;margin-top:12px}
-  /* Выравнивание по ДВУМ картинкам: лейбл "Видео" вынесен над сеткой,
-     поэтому обе колонки стартуют прямо с рамки видео / фото. align-items:start. */
-  .hero-toplabel{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .hero-toplabels{display:grid;grid-template-columns:minmax(0,1fr) minmax(370px,470px);gap:30px;margin-bottom:12px}
+  .hero-toplabel{display:flex;align-items:center;gap:10px}
   .hero-toplabel .t{font-size:14px;font-weight:800}
-  .hero-toplabel .n{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;background:var(--wine);border-radius:100px;padding:3px 10px}
-  /* фото чуть шире (правая колонка больше), низы колонок совпадают: stretch */
+  .hero-toplabel .n{font-family:inherit;font-size:11px;font-weight:700;color:#fff;background:var(--wine);border-radius:100px;padding:3px 10px}
   .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(370px,470px);gap:30px;align-items:stretch}
   .hero-left{display:flex;flex-direction:column}
   .hero-left .videos{margin-top:0}
   .hero-left .spec{margin-top:18px}
 
-  /* фото-якорь: верх по рамке видео, низ по ряду соцсетей левой колонки */
-  .hero-photo{position:relative;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#eee}
-  .hero-photo .frame{position:absolute;inset:0;display:block;width:100%;height:100%;cursor:zoom-in;padding:0;border:0;background:none}
-  .hero-photo .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
-  /* стрелки листания - появляются при наведении на фото */
-  .hero-arr{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--wine);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .18s,background .15s;z-index:3;box-shadow:0 6px 18px rgba(30,20,24,.25)}
-  .hero-photo:hover .hero-arr{opacity:1}
-  .hero-arr:hover{background:#fff}
-  .hero-arr.prev{left:12px}
-  .hero-arr.next{right:12px}
-  .hero-arr svg{width:18px;height:18px}
-  /* значок "на весь экран" сверху */
-  .hero-expand{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(30,20,24,.5);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .18s,background .15s;z-index:3}
-  .hero-photo:hover .hero-expand{opacity:1}
-  .hero-expand:hover{background:rgba(30,20,24,.75)}
-  .hero-expand svg{width:17px;height:17px}
-  /* счётчик кадров внизу */
-  .hero-count{position:absolute;left:12px;bottom:12px;background:rgba(30,20,24,.55);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;padding:4px 10px;border-radius:100px;z-index:3;pointer-events:none}
+  .hero-photos{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(120px,.75fr);grid-template-rows:1fr 1fr;gap:6px;min-height:0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:var(--paper)}
+  .hero-shot{position:relative;min-height:0;padding:0;border:0;background:var(--paper);overflow:hidden;cursor:zoom-in}
+  .hero-shot:first-child{grid-row:1/3}
+  .hero-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s}
+  .hero-shot:hover img{transform:scale(1.025)}
+  .hero-shot:focus-visible{outline:3px solid var(--wine);outline-offset:-3px;z-index:2}
+  .hero-shot-count{position:absolute;left:10px;bottom:10px;background:var(--wine);color:#fff;font-family:inherit;font-size:11px;font-weight:700;padding:5px 10px;border-radius:100px;z-index:2;pointer-events:none}
 
   /* чуть более квадратные скругления по всему герою */
   .hero-left .vmain,.hero-left .vth{border-radius:8px}
   .hero-left .spec .cell{border-radius:12px}
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:24px;align-items:start}
-    .hero-photo{order:-1;min-height:0}
-    .hero-photo .frame{position:relative;aspect-ratio:44/52}
-    .hero-arr,.hero-expand{opacity:1}
+    .hero-toplabels{display:none}
+    .hero-photos{order:-1;grid-template-columns:minmax(0,1.15fr) minmax(110px,.85fr);grid-template-rows:210px 210px;width:100%}
+  }
+  @media (max-width:560px){
+    .hero-photos{grid-template-rows:170px 170px}
   }
   /* кнопки в футере полноэкранной галереи */
   .gbot{gap:12px;flex-wrap:wrap}
   .btn.ghost.light{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff}
   .btn.ghost.light:hover{border-color:#fff;background:rgba(255,255,255,.16)}
 </style>
+<link rel="stylesheet" href="assets/design-system.css">
+<link rel="stylesheet" href="assets/profile-editorial.css">
+<script src="assets/actor-profiles.js" defer></script>
 </head>
-<body>
+<body class="profile-page">
 
 <!-- NAV -->
 <div class="nav-shell">
@@ -339,7 +334,7 @@
     <nav class="nav">
       <a href="index.html"><img class="logo" src="assets/logo.png" alt="GRECHISHKINO"></a>
       <div class="links">
-        <span class="drop"><a href="catalog.html?f=male" class="on">Актёры</a>
+        <span class="drop"><a href="catalog.html?f=male" class="on">Актеры</a>
           <div class="menu">
             <a href="profile.html">Антоненко Илья</a><a href="profile.html">Миллер Владислав</a>
             <a href="profile.html">Барышев Матвей</a><a href="profile.html">Михеев Евгений</a>
@@ -377,7 +372,7 @@
     </nav>
     <div class="m-menu" id="mMenu">
       <a href="index.html">Главная</a>
-      <a href="catalog.html?f=male">Актёры</a>
+      <a href="catalog.html?f=male">Актеры</a>
       <a href="catalog.html?f=female">Актрисы</a>
       <a href="catalog.html?f=new">Новые лица</a>
       <a href="about.html">О нас</a>
@@ -392,131 +387,141 @@
 </div>
 
 
-<!-- SIDE-НАВИГАЦИЯ ПО БЛОКАМ -->
-<nav class="pagenav" aria-label="Разделы страницы">
-  <a href="#top" class="on"><span>Видео и данные</span></a>
-  <a href="#photos"><span>Образы</span></a>
-  <a href="#filmography"><span>Фильмография</span></a>
-  <a href="#actor-news"><span>Новости актёра</span></a>
-  <a href="#more"><span>Ещё актёры</span></a>
-  <a href="#contact"><span>Контакт</span></a>
-</nav>
-
-<!-- HERO: имя поверх на всю ширину, ниже слева видео+ттх, справа крупный листаемый фото-якорь -->
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-head reveal">
-      <div class="eyebrow">Актёр театра и кино · Москва</div>
-      <h1 class="name">Юрий <b>Колокольников</b></h1>
-      <p class="lead">Более 70 проектов в кино и сериалах. Работал с Кристофером Ноланом и Майклом Бэем, снимался в сериале HBO "Игра престолов".</p>
-    </div>
-    <div class="hero-toplabel reveal"><span class="t">Видео</span><span class="n">4 видео</span></div>
-    <div class="hero-grid">
-      <div class="hero-left reveal">
-        <div class="videos">
-          <a class="vmain" id="vmain" href="#" aria-label="Смотреть видео" style="background-image:linear-gradient(180deg,rgba(30,20,24,.05),rgba(30,20,24,.55)),url('assets/poster_lastronin.jpg')">
-            <span class="shade"></span>
-            <span class="play"></span>
-            <span class="cap"><b id="vcap">Шоурил</b><span id="vsub">2:14 · нажмите, чтобы смотреть</span></span>
-          </a>
-          <div class="vthumbs">
-            <button class="vth on" type="button" data-img="assets/poster_lastronin.jpg" data-cap="Шоурил" data-sub="2:14 · нажмите, чтобы смотреть" style="background-image:url('assets/poster_lastronin.jpg')"><span class="sh"></span><span class="pl"></span><b>Шоурил</b></button>
-            <button class="vth" type="button" data-img="assets/vth_vizitka.jpg" data-cap="Визитка" data-sub="0:58 · знакомство с актёром" style="background-image:url('assets/vth_vizitka.jpg')"><span class="sh"></span><span class="pl"></span><b>Визитка</b></button>
-            <button class="vth" type="button" data-img="assets/vth_interview.jpg" data-cap="Интервью" data-sub="Разговор о Голливуде и ролях" style="background-image:url('assets/vth_interview.jpg')"><span class="sh"></span><span class="pl"></span><b>Интервью</b></button>
-          </div>
-        </div>
-        <div class="spec">
-          <div class="cell"><div class="k">Возраст</div><div class="v">45 <small>лет</small></div></div>
-          <div class="cell"><div class="k">Рост</div><div class="v">198 <small>см</small></div></div>
-          <div class="cell"><div class="k">Глаза</div><div class="v sm">Серо-зелёные</div></div>
-          <div class="cell"><div class="k">Волосы</div><div class="v sm">Блондин</div></div>
-        </div>
-        <div class="cta-row">
-          <a class="btn primary" href="#contact">Запросить актёра</a>
-          <a class="btn ghost" href="#photos">Скачать фото</a>
-        </div>
-        <div class="socials">
-          <a class="ig-note" href="https://www.instagram.com/yurikolokolnikovofficial/"><img src="assets/icon_instagram_color.svg" alt="">Instagram</a>
-          <a href="https://casting.filmtoolz.ru/420385/"><img src="assets/icon_filmtoolz_color.svg" alt="">FilmToolz</a>
-          <a href="https://www.kinopoisk.ru/name/230534/"><img src="assets/icon_kinopoisk.png" alt="">Кинопоиск</a>
-          <a href="https://www.kino-teatr.ru/kino/acter/m/ros/2067/works/"><img src="assets/icon_kinoteatr.png" alt="">Кино-Театр.ру</a>
-          <a href="https://www.imdb.com/name/nm0464305"><img src="assets/icon_imdb.png" alt="">IMDb</a>
-        </div>
+<!-- Первый экран: фото и актерская визитка -->
+<header id="top">
+  <div class="wrap profile-intro">
+    <img class="profile-portrait" src="assets/portrait_main.jpg" alt="Юрий Колокольников">
+    <div class="profile-copy">
+      <h1>Юрий <span>Колокольников</span></h1>
+      <p class="profile-summary">Актер театра и кино. Более 70 проектов, среди которых "Игра престолов", "Тенет", "Последний Ронин" и "Мастер и Маргарита".</p>
+      <dl class="profile-facts">
+        <div class="profile-fact"><dt>Возраст</dt><dd>45 лет</dd></div>
+        <div class="profile-fact"><dt>Рост</dt><dd>198 см</dd></div>
+        <div class="profile-fact"><dt>Глаза</dt><dd>Серо-зеленые</dd></div>
+        <div class="profile-fact"><dt>Волосы</dt><dd>Блондин</dd></div>
+      </dl>
+      <div class="profile-actions">
+        <a class="btn primary" href="#contact">Запросить актера</a>
+        <a class="btn ghost" href="#photos">Скачать фото</a>
       </div>
-      <div class="hero-photo reveal" id="heroPhoto">
-        <button class="frame" id="heroFrame" type="button" aria-label="Открыть фото на весь экран">
-          <img id="heroImg" src="assets/portrait_main.jpg" alt="Юрий Колокольников">
-        </button>
-        <button class="hero-arr prev" id="heroPrev" type="button" aria-label="Предыдущее фото">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="hero-arr next" id="heroNext" type="button" aria-label="Следующее фото">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-        <button class="hero-expand" id="heroExpand" type="button" aria-label="На весь экран">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-        </button>
-        <span class="hero-count" id="heroCount">1 / 5</span>
+      <div class="profile-links" aria-label="Профили актера">
+        <a href="https://casting.filmtoolz.ru/420385/"><img src="assets/icon_filmtoolz_color.svg" alt="">FilmToolz</a>
+        <a href="https://www.kinopoisk.ru/name/230534/"><img src="assets/icon_kinopoisk.png" alt="">Кинопоиск</a>
+        <a href="https://www.kino-teatr.ru/kino/acter/m/ros/2067/works/"><img src="assets/icon_kinoteatr.png" alt="">Кино-Театр.ру</a>
+        <a class="ig-note" href="https://www.instagram.com/yurikolokolnikovofficial/"><img src="assets/icon_instagram_color.svg" alt="">Instagram</a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ОБРАЗЫ: фото вторыми, 4 образа + заметная стрелка "ещё" -->
-<section class="block reveal" id="photos">
+<!-- Фотографии: крупная двухрядная подача по референсу -->
+<section class="profile-gallery" id="photos" aria-label="Фотографии Юрия Колокольникова">
+  <div class="gallery">
+    <figure><img src="assets/photo1.jpg" alt="Юрий Колокольников, портрет"></figure>
+    <figure><img src="assets/photo2.jpg" alt="Юрий Колокольников, образ для съемок"></figure>
+    <figure><img src="assets/photo3.jpg" alt="Юрий Колокольников, крупный план"></figure>
+    <figure><img src="assets/photo4.jpg" alt="Юрий Колокольников, актерский портрет"></figure>
+  </div>
+</section>
+
+<!-- Видео: большой экран и навигация по роликам -->
+<section class="video-stage" id="video">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-title">Образы</span><span class="sec-note">Кликабельно · открывается на весь экран</span></div>
-    <div class="gallery">
-      <figure><img src="assets/photo1.jpg" alt="Образ 1"><figcaption>Деловой</figcaption></figure>
-      <figure><img src="assets/photo2.jpg" alt="Образ 2"><figcaption>Драматический</figcaption></figure>
-      <figure><img src="assets/photo3.jpg" alt="Образ 3"><figcaption>Характерный</figcaption></figure>
-      <figure><img src="assets/photo4.jpg" alt="Образ 4"><figcaption>Портрет</figcaption></figure>
-      <a class="morefoto" href="#">
-        <span class="arr">-></span>
-        <b>Ещё 12 фото</b>
-        <span>вся галерея образов</span>
+    <div>
+      <h2>Видео Юрия</h2>
+      <a class="vmain" id="vmain" href="#" aria-label="Смотреть шоурил" style="background-image:linear-gradient(180deg,rgba(20,20,20,.02),rgba(20,20,20,.7)),url('assets/poster_lastronin.jpg')">
+        <span class="shade"></span>
+        <span class="play"></span>
+        <span class="cap"><b id="vcap">Шоурил</b><span id="vsub">2:14</span></span>
       </a>
     </div>
+    <div>
+      <p class="video-menu-title">Выберите видео</p>
+      <div class="video-menu">
+        <button class="video-choice vth on" type="button" data-img="assets/poster_lastronin.jpg" data-cap="Шоурил" data-sub="2:14"><span>01</span><b>Шоурил</b><small>2:14</small></button>
+        <button class="video-choice vth" type="button" data-img="assets/vth_vizitka.jpg" data-cap="Визитка" data-sub="0:58"><span>02</span><b>Визитка</b><small>0:58</small></button>
+        <button class="video-choice vth" type="button" data-img="assets/vth_interview.jpg" data-cap="Интервью" data-sub="8:42"><span>03</span><b>Интервью</b><small>8:42</small></button>
+        <button class="video-choice vth" type="button" data-img="assets/news_levsha.jpg" data-cap="Фрагмент из фильма" data-sub="1:36"><span>04</span><b>Фрагмент из фильма</b><small>1:36</small></button>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ФИЛЬМОГРАФИЯ: список проектов с постерами и тегами -->
-<section class="block reveal" id="filmography">
+<!-- Кадры и образы между содержательными блоками -->
+<section class="role-strip" aria-label="Фотографии актера в образах">
+  <figure><img src="assets/photo1.jpg" alt="Юрий Колокольников, портрет" loading="lazy"></figure>
+  <figure><img src="assets/photo2.jpg" alt="Юрий Колокольников в образе" loading="lazy"></figure>
+  <figure><img src="assets/photo3.jpg" alt="Юрий Колокольников, крупный план" loading="lazy"></figure>
+  <figure><img src="assets/photo4.jpg" alt="Юрий Колокольников, актерский портрет" loading="lazy"></figure>
+</section>
+
+<!-- Фильмография: текстовый список с живым превью -->
+<section class="film-editorial" id="filmography">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-title">Фильмография</span><span class="sec-note">Постеры кликабельны · теги ролей</span></div>
-
-    <div class="wall">
-      <a class="poster" href="#"><img src="assets/poster_polden.jpg" alt="Полдень"><span class="pcap"><b>Полдень</b><span>2026 · Максим Каммерер · главная</span></span></a>
-      <a class="poster" href="#"><img src="assets/poster_taynyygorod.jpg" alt="Тайный город"><span class="pcap"><b>Тайный город</b><span>2026 · Саньтяго</span></span></a>
-      <a class="poster" href="#"><img src="assets/poster_lastronin.jpg" alt="Последний Ронин"><span class="pcap"><b>Последний Ронин</b><span>2024 · Ронин · главная</span></span></a>
-      <a class="poster" href="#"><img src="assets/poster_volshebnik.jpg" alt="Волшебник Изумрудного города"><span class="pcap"><b>Волшебник ИГ</b><span>2024 · Железный дровосек</span></span></a>
-      <a class="poster" href="#"><img src="assets/poster_besprintsipnye.jpg" alt="Беспринципные"><span class="pcap"><b>Беспринципные</b><span>2020-24 · Роман</span></span></a>
-    </div>
-
-    <div class="chips">
-      <span class="chip"><b>2024</b> Мастер и Маргарита - Коровьев</span>
-      <span class="chip"><b>2020</b> Tenet · Nolan</span>
-      <span class="chip"><b>2014</b> Game of Thrones</span>
-      <span class="chip"><b>2019</b> 6 Underground · Michael Bay</span>
-      <span class="chip">+ ещё 60 проектов</span>
+    <h2>Фильмография</h2>
+    <div class="film-layout">
+      <figure class="film-preview">
+        <img id="filmPreview" src="assets/poster_polden.jpg" alt="Полдень">
+        <p id="filmPreviewCaption">"Полдень", в производстве</p>
+      </figure>
+      <div>
+        <div class="film-list" id="filmList">
+          <a class="film-row" href="#" data-preview="assets/poster_polden.jpg" data-caption="Полдень, в производстве">
+            <span class="film-year">2026</span><span class="film-name">Полдень<span class="film-status">В производстве</span></span><span class="film-meta">реж. Клим Козинский<br>Максим Каммерер, главная роль</span>
+          </a>
+          <a class="film-row" href="#" data-preview="assets/poster_taynyygorod.jpg" data-caption="Тайный город, в производстве">
+            <span class="film-year">2026</span><span class="film-name">Тайный город<span class="film-status">В производстве</span></span><span class="film-meta">реж. Андрей Туманов<br>Саньтяго</span>
+          </a>
+          <a class="film-row" href="#" data-preview="assets/poster_lastronin.jpg" data-caption="Последний Ронин, 2024">
+            <span class="film-year">2024</span><span class="film-name">Последний Ронин</span><span class="film-meta">реж. Макс Шишкин<br>Ронин, главная роль</span>
+          </a>
+          <a class="film-row" href="#" data-preview="assets/poster_volshebnik.jpg" data-caption="Волшебник Изумрудного города, 2024">
+            <span class="film-year">2024</span><span class="film-name">Волшебник Изумрудного города</span><span class="film-meta">реж. Игорь Волошин<br>Железный дровосек</span>
+          </a>
+          <a class="film-row" href="#" data-preview="assets/poster_besprintsipnye.jpg" data-caption="Беспринципные, 4 сезон, 2024">
+            <span class="film-year">2024</span><span class="film-name">Беспринципные, 4 сезон</span><span class="film-meta">реж. Роман Прыгунов<br>Роман</span>
+          </a>
+          <a class="film-row is-hidden" href="#" data-preview="assets/news_levsha.jpg" data-caption="Левша, 2026">
+            <span class="film-year">2026</span><span class="film-name">Левша</span><span class="film-meta">реж. Владимир Беседин<br>Левша, главная роль</span>
+          </a>
+          <a class="film-row is-hidden" href="#" data-preview="assets/news_kholod.jpg" data-caption="Яга на вашу голову, 2025">
+            <span class="film-year">2025</span><span class="film-name">Яга на вашу голову</span><span class="film-meta">реж. Александр Войтинский<br>Артем Виноградов</span>
+          </a>
+          <a class="film-row is-hidden" href="#" data-preview="assets/news_taynyygorod.jpg" data-caption="Амура, 2024">
+            <span class="film-year">2024</span><span class="film-name">Амура</span><span class="film-meta">реж. Андрей Джунковский<br>Ермак, главная роль</span>
+          </a>
+          <a class="film-row is-hidden" href="#" data-preview="assets/news_besprintsipnye5.jpg" data-caption="По щучьему велению, 2023">
+            <span class="film-year">2023</span><span class="film-name">По щучьему велению</span><span class="film-meta">реж. Александр Войтинский<br>Лорд Ротман</span>
+          </a>
+        </div>
+        <button class="btn ghost film-toggle" id="filmmore" type="button">Показать еще 4 проекта</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- НОВОСТИ АКТЁРА: отдельный блок, не смешан с фильмографией -->
+<!-- Финальная линия фотографий перед новостями -->
+<section class="role-gallery" aria-label="Юрий Колокольников в кино">
+  <figure><img src="assets/photo4.jpg" alt="Юрий Колокольников, актерский портрет" loading="lazy"></figure>
+  <figure><img src="assets/photo2.jpg" alt="Юрий Колокольников в образе" loading="lazy"></figure>
+  <figure><img src="assets/portrait_main.jpg" alt="Юрий Колокольников, портрет" loading="lazy"></figure>
+  <figure><img src="assets/photo1.jpg" alt="Юрий Колокольников, портрет" loading="lazy"></figure>
+</section>
+
+<!-- НОВОСТИ АКТЕРА: отдельный блок, не смешан с фильмографией -->
 <section class="block reveal" id="actor-news">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-title">Новости Юрия</span><span class="sec-note"><a href="news.html">Все новости агентства -></a></span></div>
+    <div class="sec-head"><span class="sec-title">Новости Юрия</span><span class="sec-note"><a href="news.html">Все новости агентства</a></span></div>
     <div class="newsgrid">
-      <a class="ncard" href="news.html">
+      <a class="ncard" href="news-article.html">
         <img src="assets/news_taynyygorod.jpg" alt="Тайный город" loading="lazy">
         <span class="nbody"><span class="nd">31.05.2026</span><span class="nt">Вышел тизер сериала "Тайный город" с Юрием Колокольниковым</span></span>
       </a>
-      <a class="ncard" href="news.html">
+      <a class="ncard" href="news-article.html">
         <img src="assets/news_besprintsipnye5.jpg" alt="Беспринципные 5" loading="lazy">
         <span class="nbody"><span class="nd">28.04.2026</span><span class="nt">Премьера 5-го сезона сериала "Беспринципные" с Юрием Колокольниковым</span></span>
       </a>
-      <a class="ncard" href="news.html">
+      <a class="ncard" href="news-article.html">
         <img src="assets/news_levsha.jpg" alt="Левша" loading="lazy">
         <span class="nbody"><span class="nd">21.01.2026</span><span class="nt">Светская премьера приключенческой картины "Левша" с Юрием Колокольниковым в главной роли</span></span>
       </a>
@@ -524,20 +529,18 @@
   </div>
 </section>
 
-<!-- ЕЩЁ АКТЁРЫ: подписи возраст/рост, перелинковка, намёк на запрос по нескольким -->
+<!-- ЕЩЕ АКТЕРЫ: подписи возраст/рост, перелинковка, намек на запрос по нескольким -->
 <section class="block reveal" id="more">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-title">Ещё актёры агентства</span><span class="sec-note">Отметьте плюсиком и напишите одним запросом</span></div>
+    <div class="sec-head"><span class="sec-title">Еще актеры агентства</span></div>
     <div class="xsell">
-      <a class="acard" href="profile.html"><span class="with">Снимались вместе · 2 проекта</span><span class="pick">+</span><img src="assets/actor_golovin.jpg" alt="Александр Головин" loading="lazy"><span class="cap"><b>Александр Головин</b><span>37 лет · 171 см</span></span></a>
-      <a class="acard" href="profile.html"><span class="pick">+</span><img src="assets/actor_verevochkin.jpg" alt="Владимир Веревочкин" loading="lazy"><span class="cap"><b>Владимир Веревочкин</b><span>38 лет · 176 см</span></span></a>
-      <a class="acard" href="profile.html"><span class="pick">+</span><img src="assets/actor_nazimov.jpg" alt="Андрей Назимов" loading="lazy"><span class="cap"><b>Андрей Назимов</b><span>39 лет · 190 см</span></span></a>
-      <a class="acard" href="profile.html"><span class="pick">+</span><img src="assets/actor_belosorochka.jpg" alt="Ефим Белосорочка" loading="lazy"><span class="cap"><b>Ефим Белосорочка</b><span>28 лет · 191 см</span></span></a>
+      <a class="acard" href="profile.html"><img src="assets/actor_golovin.jpg" alt="Александр Головин" loading="lazy"><span class="cap"><b>Александр Головин</b><span>37 лет · 171 см</span></span></a>
+      <a class="acard" href="profile.html"><img src="assets/actor_verevochkin.jpg" alt="Владимир Веревочкин" loading="lazy"><span class="cap"><b>Владимир Веревочкин</b><span>38 лет · 176 см</span></span></a>
+      <a class="acard" href="profile.html"><img src="assets/actor_nazimov.jpg" alt="Андрей Назимов" loading="lazy"><span class="cap"><b>Андрей Назимов</b><span>39 лет · 190 см</span></span></a>
+      <a class="acard" href="profile.html"><img src="assets/actor_belosorochka.jpg" alt="Ефим Белосорочка" loading="lazy"><span class="cap"><b>Ефим Белосорочка</b><span>28 лет · 191 см</span></span></a>
     </div>
     <div class="xsell-foot">
-      <a class="btn primary" href="#contact">Написать по выбранным (2)</a>
-      <a class="btn ghost" href="catalog.html">Весь каталог · 16 актёров</a>
-      <span class="hint">Кастинг-директор отбирает нескольких - и пишет одним сообщением.</span>
+      <a class="btn ghost" href="catalog.html">Весь каталог · 16 актеров</a>
     </div>
   </div>
 </section>
@@ -547,8 +550,8 @@
   <div class="wrap">
     <div class="f-cta">
       <div>
-        <h3>Пригласить Юрия на проект</h3>
-        <p>Юрия представляет агентство Grechishkino. Ответим в течение дня.</p>
+        <h2>Пригласить Юрия на проект</h2>
+        <p>Юрия представляет агентство Grechishkino. Ответим оперативно.</p>
       </div>
       <div class="clinks">
         <a class="clink primary" href="tel:+79057128403">+7 905 712 84 03</a>
@@ -560,11 +563,11 @@
     <div class="f-mid">
       <div class="f-brand">
         <div class="f-logo">GRECHISHKINO</div>
-        <p>Актёрское агентство, Москва. 16 актёров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
       </div>
       <div class="f-col">
         <div class="f-k">Разделы</div>
-        <a href="catalog.html?f=male">Актёры</a>
+        <a href="catalog.html?f=male">Актеры</a>
         <a href="catalog.html?f=female">Актрисы</a>
         <a href="catalog.html?f=new">Новые лица</a>
         <a href="about.html">О нас</a>
@@ -576,6 +579,7 @@
         <a href="https://casting.filmtoolz.ru/grechishkino/">FilmToolz</a>
         <a href="https://rutube.ru/channel/39720543/">RuTube</a>
         <a href="https://t.me/grechishkina_irina">Telegram</a>
+        <a href="https://www.instagram.com/grechishkino.ru/">Instagram*</a>
       </div>
       <div class="f-col">
         <div class="f-k">Контакты</div>
@@ -588,53 +592,35 @@
       <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
       <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
       <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
-      <span>© 2026 Актёрское агентство "Гречишкино"</span>
+      <span>* Instagram - продукт Meta, признанной экстремистской и запрещенной в РФ</span>
+      <span>© 2026 Актерское агентство "Гречишкино"</span>
     </div>
   </div>
 </footer>
 
 <!-- ВСЕ ФОТО НА ВЕСЬ ЭКРАН -->
-<div class="gbox" id="gbox" role="dialog" aria-label="Все фото актёра">
+<div class="gbox" id="gbox" role="dialog" aria-label="Все фото актера">
   <button class="gclose" type="button" aria-label="Закрыть галерею"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
-  <div class="gtop"><b>Образы · Юрий Колокольников</b><span>16 фото</span></div>
   <div class="gstrip" id="gstrip">
     <img src="assets/photo1.jpg" alt="Образ 1" loading="lazy">
     <img src="assets/photo2.jpg" alt="Образ 2" loading="lazy">
     <img src="assets/photo3.jpg" alt="Образ 3" loading="lazy">
     <img src="assets/photo4.jpg" alt="Образ 4" loading="lazy">
-    <img src="assets/portrait_main.jpg" alt="Образ 5" loading="lazy">
-    <img src="assets/photo3.jpg" alt="Образ 6" loading="lazy">
-    <img src="assets/photo1.jpg" alt="Образ 7" loading="lazy">
-    <img src="assets/photo4.jpg" alt="Образ 8" loading="lazy">
-    <img src="assets/photo2.jpg" alt="Образ 9" loading="lazy">
-    <img src="assets/photo1.jpg" alt="Образ 10" loading="lazy">
-    <img src="assets/photo3.jpg" alt="Образ 11" loading="lazy">
-    <img src="assets/photo2.jpg" alt="Образ 12" loading="lazy">
-    <img src="assets/photo4.jpg" alt="Образ 13" loading="lazy">
-    <img src="assets/photo1.jpg" alt="Образ 14" loading="lazy">
-    <img src="assets/photo2.jpg" alt="Образ 15" loading="lazy">
-    <img src="assets/photo3.jpg" alt="Образ 16" loading="lazy">
-  </div>
-  <button class="garr prev" type="button" aria-label="Назад"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-  <button class="garr next" type="button" aria-label="Вперёд"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-  <div class="gbot">
-    <a class="btn primary" id="gWriteActor" href="#contact">Написать по актёру</a>
-    <a class="btn ghost light" id="gAllPhotos" href="#photos">Смотреть все фото</a>
   </div>
 </div>
 
 <div class="chat-pop" id="chatPop" role="dialog" aria-label="Чат с агентством">
   <div class="ch-head">
-    <div class="t"><b>Чат с агентством</b><span>ответим сегодня</span></div>
+    <div class="t"><b>Агентство Grechishkino</b><span>вопрос по актеру или проекту</span></div>
     <a class="ch-tg" href="https://t.me/grechishkina_irina"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.6 20c-.2 1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L5.9 13.5l-4.9-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.7.2 1.4 1.6z"/></svg> Написать в Telegram</a>
     <button class="ch-close" type="button" aria-label="Закрыть чат"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   </div>
   <div class="ch-body" id="chatBody">
-    <div class="ch-msg in">Здравствуйте! На связи агентство Grechishkino. Напишите, кого ищете, - подскажем по ростеру и пришлём материалы.</div>
+    <div class="ch-msg in">Здравствуйте! На связи агентство Grechishkino. Напишите, кого ищете, - подскажем по ростеру и пришлем материалы.</div>
   </div>
   <div class="ch-presets" id="chatPresets">
-    <button class="ch-preset" type="button">Мне нужен актёр на роль...</button>
-    <button class="ch-preset" type="button">Свободен ли актёр в даты съёмок?</button>
+    <button class="ch-preset" type="button">Мне нужен актер на роль...</button>
+    <button class="ch-preset" type="button">Свободен ли актер в даты съемок?</button>
     <button class="ch-preset" type="button">Пришлите видео-визитку и фото</button>
   </div>
   <form class="ch-form" id="chatForm">
@@ -643,7 +629,7 @@
   </form>
 </div>
 
-<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span><span class="chat-txt">Спросите сразу онлайн</span></button>
+<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span><span class="chat-txt">Написать агентству</span></button>
 
 <script>
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
@@ -704,56 +690,42 @@
     if(im)im.scrollIntoView({inline:'center',block:'nearest'});
   }
   function gClose(){gbox.classList.remove('open');document.body.style.overflow=''}
-  document.querySelector('.morefoto').addEventListener('click',(e)=>{e.preventDefault();gOpen(0)});
+  const morePhoto=document.querySelector('.morefoto');
+  if(morePhoto)morePhoto.addEventListener('click',(e)=>{e.preventDefault();gOpen(0)});
   document.querySelectorAll('.gallery figure').forEach((f,i)=>{f.style.cursor='zoom-in';f.addEventListener('click',()=>gOpen(i))});
   gbox.querySelector('.gclose').addEventListener('click',gClose);
   document.addEventListener('keydown',(e)=>{if(e.key==='Escape')gClose()});
-  const gstep=()=>gstrip.clientWidth*.7;
-  gbox.querySelector('.garr.prev').addEventListener('click',()=>gstrip.scrollBy({left:-gstep(),behavior:'smooth'}));
-  gbox.querySelector('.garr.next').addEventListener('click',()=>gstrip.scrollBy({left:gstep(),behavior:'smooth'}));
-  // кнопки в полноэкранной галерее: закрыть её, потом перейти по якорю
-  const gTo=(sel)=>{gClose();const t=document.querySelector(sel);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})};
-  const gAll=document.getElementById('gAllPhotos'),gWrite=document.getElementById('gWriteActor');
-  if(gAll)gAll.addEventListener('click',(e)=>{e.preventDefault();gTo('#photos')});
-  if(gWrite)gWrite.addEventListener('click',(e)=>{e.preventDefault();gTo('#contact')});
 
-  // ГЕРОЙ-ФОТО: листаемая галерея тех же образов, что и в блоке "Образы"
-  const heroImg=document.getElementById('heroImg'),heroCount=document.getElementById('heroCount');
-  if(heroImg){
-    // источник кадров - те же фото из галереи (один источник, без дублей)
-    const shots=[...gstrip.querySelectorAll('img')].map(im=>({src:im.getAttribute('src'),alt:im.getAttribute('alt')||''}));
-    let hi=0;
-    const showHero=(i)=>{
-      hi=(i+shots.length)%shots.length;
-      heroImg.src=shots[hi].src;
-      heroImg.alt=shots[hi].alt;
-      heroCount.textContent=(hi+1)+' / '+shots.length;
-    };
-    showHero(0);
-    document.getElementById('heroPrev').addEventListener('click',(e)=>{e.stopPropagation();showHero(hi-1)});
-    document.getElementById('heroNext').addEventListener('click',(e)=>{e.stopPropagation();showHero(hi+1)});
-    // клик по фото или по значку разворота - открыть на весь экран на текущем кадре
-    document.getElementById('heroFrame').addEventListener('click',()=>gOpen(hi));
-    document.getElementById('heroExpand').addEventListener('click',(e)=>{e.stopPropagation();gOpen(hi)});
-  }
-
+  // Фотографии в первом экране открывают ту же полноэкранную галерею.
   // переключение видео по превью
   const vmain=document.getElementById('vmain'),vcap=document.getElementById('vcap'),vsub=document.getElementById('vsub');
+  if(vmain)vmain.addEventListener('click',(e)=>e.preventDefault());
   document.querySelectorAll('.vth').forEach(t=>{
     t.addEventListener('click',()=>{
       document.querySelectorAll('.vth').forEach(x=>x.classList.remove('on'));
       t.classList.add('on');
-      vmain.style.backgroundImage="linear-gradient(180deg,rgba(30,20,24,.05),rgba(30,20,24,.55)),url('"+t.dataset.img+"')";
+      vmain.style.backgroundImage="linear-gradient(180deg,rgba(20,20,20,.05),rgba(20,20,20,.55)),url('"+t.dataset.img+"')";
       vcap.textContent=t.dataset.cap;
       vsub.textContent=t.dataset.sub;
     });
   });
 
-  // подсветка side-навигации
-  const secs=[...document.querySelectorAll('section[id],header[id]')];
-  const dots=[...document.querySelectorAll('.pagenav a')];
-  const spy=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){dots.forEach(d=>d.classList.toggle('on',d.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-40% 0px -55% 0px'});
-  secs.forEach(s=>spy.observe(s));
+  // Фильмография: превью меняется при наведении и фокусе, список раскрывается по запросу.
+  const filmPreview=document.getElementById('filmPreview'),filmCaption=document.getElementById('filmPreviewCaption');
+  document.querySelectorAll('.film-row').forEach((row)=>{
+    const showFilm=()=>{
+      if(!filmPreview)return;
+      filmPreview.src=row.dataset.preview;
+      filmPreview.alt=row.dataset.caption;
+      if(filmCaption)filmCaption.textContent=row.dataset.caption;
+    };
+    row.addEventListener('mouseenter',showFilm);
+    row.addEventListener('focus',showFilm);
+    row.addEventListener('click',(e)=>e.preventDefault());
+  });
+  const fmBtn=document.getElementById('filmmore'),fmList=document.getElementById('filmList');
+  if(fmBtn&&fmList){fmBtn.addEventListener('click',()=>{const o=fmList.classList.toggle('open');fmBtn.textContent=o?'Свернуть':'Показать еще 4 проекта'})}
+
 </script>
 </body>
 </html>

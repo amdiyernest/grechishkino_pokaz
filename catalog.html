@@ -3,26 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRECHISHKINO - каталог актёров: фильтры по возрасту, росту, навыкам</title>
+<title>GRECHISHKINO - каталог актеров: фильтры по возрасту и росту</title>
 <link rel="icon" href="assets/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --wine:#890F30;
-    --wine-deep:#6B0B25;
-    --wine-700:#7A0D2A;
-    --rose:#AC576E;
-    --wine-soft:#F7E1E8;
-    --wine-tint:#FCF3F6;
+    --ink:#141414;
     --paper:#FFFFFF;
-    --bg:#FAF8F7;
-    --ink:#1E1418;
-    --ink2:#4A3C41;
-    --muted:#8C7F84;
-    --line:#EEE5E8;
-    --shadow:0 18px 50px -22px rgba(94,21,38,.28);
+    --gray:#686868;
+    --line:rgba(20,20,20,.16);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -96,7 +88,7 @@
   /* ---------- сетка ---------- */
   section.block{padding:34px 0 44px}
   .roster{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .acard{position:relative;border-radius:10px;overflow:hidden;background:#eee;box-shadow:0 10px 28px -20px rgba(30,20,24,.45);text-decoration:none;display:block}
+  .acard{position:relative;border-radius:10px;overflow:hidden;background:var(--soft);box-shadow:0 10px 28px -20px rgba(30,20,24,.45);text-decoration:none;display:block}
   .acard.hide{display:none}
   .acard img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top center;display:block;transition:transform .45s}
   .acard:hover img{transform:scale(1.05)}
@@ -182,8 +174,10 @@
   }
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
 </style>
+<link rel="stylesheet" href="assets/design-system.css">
+<script src="assets/actor-profiles.js" defer></script>
 </head>
-<body>
+<body class="catalog-page">
 
 <!-- NAV -->
 <div class="nav-shell">
@@ -191,7 +185,7 @@
     <nav class="nav">
       <a href="index.html"><img class="logo" src="assets/logo.png" alt="GRECHISHKINO"></a>
       <div class="links">
-        <span class="drop"><a href="catalog.html?f=male">Актёры</a>
+        <span class="drop"><a href="catalog.html?f=male">Актеры</a>
           <div class="menu">
             <a href="profile.html">Антоненко Илья</a><a href="profile.html">Миллер Владислав</a>
             <a href="profile.html">Барышев Матвей</a><a href="profile.html">Михеев Евгений</a>
@@ -229,7 +223,7 @@
     </nav>
     <div class="m-menu" id="mMenu">
       <a href="index.html">Главная</a>
-      <a href="catalog.html?f=male">Актёры</a>
+      <a href="catalog.html?f=male">Актеры</a>
       <a href="catalog.html?f=female">Актрисы</a>
       <a href="catalog.html?f=new">Новые лица</a>
       <a href="about.html">О нас</a>
@@ -246,9 +240,8 @@
 <!-- ЗАГОЛОВОК + ФИЛЬТРЫ -->
 <header class="head">
   <div class="wrap reveal">
-    <div class="eyebrow">Каталог · Подбор актёра</div>
-    <h1 class="h1">Найдите <b>своего</b> актёра</h1>
-    <p class="lead">Фильтры по полу, возрасту, росту и навыкам. Каждая карточка ведёт в профиль: видео, фото-образы, фильмография.</p>
+    <h1 class="h1">Найдите <b>своего</b> актера</h1>
+    <p class="lead">Фильтры по полу, возрасту и росту. Каждая карточка ведет в профиль: видео, фото-образы, фильмография.</p>
 
     <div class="filters" id="filters">
       <div class="frow">
@@ -274,14 +267,6 @@
         <button class="fchip" data-k="h" data-v="171-180" type="button">171-180</button>
         <button class="fchip" data-k="h" data-v="181-190" type="button">181-190</button>
         <button class="fchip" data-k="h" data-v="191-250" type="button">Выше 190</button>
-      </div>
-      <div class="frow">
-        <span class="flabel">Навыки</span>
-        <button class="fchip" data-k="s" data-v="вокал" type="button">Вокал</button>
-        <button class="fchip" data-k="s" data-v="танец" type="button">Танец</button>
-        <button class="fchip" data-k="s" data-v="спорт" type="button">Спорт и трюки</button>
-        <button class="fchip" data-k="s" data-v="вождение" type="button">Вождение</button>
-        <button class="fchip" data-k="s" data-v="языки" type="button">Языки</button>
         <button class="freset" id="reset" type="button">Сбросить</button>
       </div>
     </div>
@@ -298,18 +283,18 @@
       <a class="acard" href="profile.html" data-g="f" data-age="48" data-h="182" data-s="языки"><img src="assets/actor_florinskaya.jpg" alt="Александра Флоринская" loading="lazy"><span class="cap"><b>Александра Флоринская</b><span>48 лет · 182 см</span></span></a>
       <a class="acard" href="profile.html" data-g="m" data-age="38" data-h="176" data-s="спорт танец языки"><img src="assets/actor_verevochkin.jpg" alt="Владимир Веревочкин" loading="lazy"><span class="cap"><b>Владимир Веревочкин</b><span>38 лет · 176 см</span></span></a>
       <a class="acard" href="profile.html" data-g="m" data-age="28" data-h="166" data-s="спорт танец вокал"><img src="assets/actor_mixeev.jpg" alt="Евгений Михеев" loading="lazy"><span class="cap"><b>Евгений Михеев</b><span>28 лет · 166 см</span></span></a>
-      <a class="acard" href="profile.html" data-g="m" data-new="1" data-age="22" data-h="185" data-s="спорт вокал"><span class="new">Новое лицо</span><img src="assets/actor_baryshev.jpg" alt="Матвей Барышев" loading="lazy"><span class="cap"><b>Матвей Барышев</b><span>22 года · 185 см</span></span></a>
+      <a class="acard" href="profile.html" data-g="m" data-new="1" data-age="22" data-h="185" data-s="спорт вокал"><img src="assets/actor_baryshev.jpg" alt="Матвей Барышев" loading="lazy"><span class="cap"><b>Матвей Барышев</b><span>22 года · 185 см</span></span></a>
       <a class="acard" href="profile.html" data-g="m" data-age="33" data-h="170" data-s="вокал спорт"><img src="assets/actor_rassomakhin.jpg" alt="Павел Рассомахин" loading="lazy"><span class="cap"><b>Павел Рассомахин</b><span>33 года · 170 см</span></span></a>
       <a class="acard" href="profile.html" data-g="m" data-age="28" data-h="191" data-s="танец спорт языки"><img src="assets/actor_belosorochka.jpg" alt="Ефим Белосорочка" loading="lazy"><span class="cap"><b>Ефим Белосорочка</b><span>28 лет · 191 см</span></span></a>
-      <a class="acard" href="profile.html" data-g="f" data-new="1" data-age="26" data-h="164" data-s="вокал спорт танец языки"><span class="new">Новое лицо</span><img src="assets/actor_galich.jpg" alt="Маргарита Галич" loading="lazy"><span class="cap"><b>Маргарита Галич</b><span>26 лет · 164 см</span></span></a>
+      <a class="acard" href="profile.html" data-g="f" data-new="1" data-age="26" data-h="164" data-s="вокал спорт танец языки"><img src="assets/actor_galich.jpg" alt="Маргарита Галич" loading="lazy"><span class="cap"><b>Маргарита Галич</b><span>26 лет · 164 см</span></span></a>
       <a class="acard" href="profile.html" data-g="f" data-age="32" data-h="175" data-s="вокал спорт танец языки"><img src="assets/actor_mishina.jpg" alt="Анастасия Мишина" loading="lazy"><span class="cap"><b>Анастасия Мишина</b><span>32 года · 175 см</span></span></a>
       <a class="acard" href="profile.html" data-g="m" data-age="27" data-h="178" data-s=""><img src="assets/actor_miller.jpg" alt="Владислав Миллер" loading="lazy"><span class="cap"><b>Владислав Миллер</b><span>27 лет · 178 см</span></span></a>
       <a class="acard" href="profile.html" data-g="m" data-age="39" data-h="190" data-s="вокал спорт танец языки"><img src="assets/actor_nazimov.jpg" alt="Андрей Назимов" loading="lazy"><span class="cap"><b>Андрей Назимов</b><span>39 лет · 190 см</span></span></a>
       <a class="acard" href="profile.html" data-g="m" data-age="36" data-h="173" data-s="спорт танец вокал"><img src="assets/actor_antonenko.jpg" alt="Илья Антоненко" loading="lazy"><span class="cap"><b>Илья Антоненко</b><span>36 лет · 173 см</span></span></a>
       <a class="acard" href="profile.html" data-g="f" data-age="59" data-h="167" data-s=""><img src="assets/actor_domaskina.jpg" alt="Лариса Домаскина" loading="lazy"><span class="cap"><b>Лариса Домаскина</b><span>59 лет · 167 см</span></span></a>
-      <a class="acard" href="profile.html" data-g="m" data-new="1" data-age="22" data-h="182" data-s="танец"><span class="new">Новое лицо</span><img src="assets/actor_savelyev.jpg" alt="Даниил Савельев" loading="lazy"><span class="cap"><b>Даниил Савельев</b><span>22 года · 182 см</span></span></a>
+      <a class="acard" href="profile.html" data-g="m" data-new="1" data-age="22" data-h="182" data-s="танец"><img src="assets/actor_savelyev.jpg" alt="Даниил Савельев" loading="lazy"><span class="cap"><b>Даниил Савельев</b><span>22 года · 182 см</span></span></a>
     </div>
-    <div class="empty" id="empty">Под такие условия никто не подошёл. <a href="#" id="emptyReset">Сбросить фильтры</a> или <a href="contacts.html">напишите нам</a> - подскажем, кого посмотреть.</div>
+    <div class="empty" id="empty">Под такие условия никто не подошел. <a href="#" id="emptyReset">Сбросить фильтры</a> или <a href="contacts.html">напишите нам</a> - подскажем, кого посмотреть.</div>
   </div>
 </section>
 
@@ -318,8 +303,8 @@
   <div class="wrap">
     <div class="f-cta">
       <div>
-        <h3>Не нашли типаж?</h3>
-        <p>Напишите, кого ищете - подскажем и пришлём пробы. Ответим в течение дня.</p>
+        <h2>Не нашли типаж?</h2>
+        <p>Напишите, кого ищете - подскажем и пришлем пробы. Ответим оперативно.</p>
       </div>
       <div class="clinks">
         <a class="clink primary" href="tel:+79057128403">+7 905 712 84 03</a>
@@ -331,11 +316,11 @@
     <div class="f-mid">
       <div class="f-brand">
         <div class="f-logo">GRECHISHKINO</div>
-        <p>Актёрское агентство, Москва. 16 актёров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
       </div>
       <div class="f-col">
         <div class="f-k">Разделы</div>
-        <a href="catalog.html?f=male">Актёры</a>
+        <a href="catalog.html?f=male">Актеры</a>
         <a href="catalog.html?f=female">Актрисы</a>
         <a href="catalog.html?f=new">Новые лица</a>
         <a href="about.html">О нас</a>
@@ -347,6 +332,7 @@
         <a href="https://casting.filmtoolz.ru/grechishkino/">FilmToolz</a>
         <a href="https://rutube.ru/channel/39720543/">RuTube</a>
         <a href="https://t.me/grechishkina_irina">Telegram</a>
+        <a href="https://www.instagram.com/grechishkino.ru/">Instagram*</a>
       </div>
       <div class="f-col">
         <div class="f-k">Контакты</div>
@@ -359,23 +345,24 @@
       <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
       <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
       <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
-      <span>© 2026 Актёрское агентство "Гречишкино"</span>
+      <span>* Instagram - продукт Meta, признанной экстремистской и запрещенной в РФ</span>
+      <span>© 2026 Актерское агентство "Гречишкино"</span>
     </div>
   </div>
 </footer>
 
 <div class="chat-pop" id="chatPop" role="dialog" aria-label="Чат с агентством">
   <div class="ch-head">
-    <div class="t"><b>Чат с агентством</b><span>ответим сегодня</span></div>
+    <div class="t"><b>Агентство Grechishkino</b><span>вопрос по актеру или проекту</span></div>
     <a class="ch-tg" href="https://t.me/grechishkina_irina"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.6 20c-.2 1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L5.9 13.5l-4.9-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.7.2 1.4 1.6z"/></svg> Написать в Telegram</a>
     <button class="ch-close" type="button" aria-label="Закрыть чат"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   </div>
   <div class="ch-body" id="chatBody">
-    <div class="ch-msg in">Здравствуйте! На связи агентство Grechishkino. Напишите, кого ищете, - подскажем по ростеру и пришлём материалы.</div>
+    <div class="ch-msg in">Здравствуйте! На связи агентство Grechishkino. Напишите, кого ищете, - подскажем по ростеру и пришлем материалы.</div>
   </div>
   <div class="ch-presets" id="chatPresets">
-    <button class="ch-preset" type="button">Мне нужен актёр на роль...</button>
-    <button class="ch-preset" type="button">Свободен ли актёр в даты съёмок?</button>
+    <button class="ch-preset" type="button">Мне нужен актер на роль...</button>
+    <button class="ch-preset" type="button">Свободен ли актер в даты съемок?</button>
     <button class="ch-preset" type="button">Пришлите видео-визитку и фото</button>
   </div>
   <form class="ch-form" id="chatForm">
@@ -384,7 +371,7 @@
   </form>
 </div>
 
-<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span><span class="chat-txt">Спросите сразу онлайн</span></button>
+<button class="chat" id="chatBtn" type="button"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2z"/></svg></span><span class="chat-txt">Написать агентству</span></button>
 
 <script>
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
@@ -485,7 +472,7 @@
   document.getElementById('reset').addEventListener('click',resetAll);
   document.getElementById('emptyReset').addEventListener('click',(e)=>{e.preventDefault();resetAll()});
 
-  // предустановка из ?f= (ссылки меню: Актёры / Актрисы / Новые лица)
+  // предустановка из ?f= (ссылки меню: Актеры / Актрисы / Новые лица)
   const f=new URLSearchParams(location.search).get('f');
   const preset={male:'m',female:'f',new:'new'}[f];
   if(preset){
