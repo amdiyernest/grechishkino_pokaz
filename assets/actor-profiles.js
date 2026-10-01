@@ -31,20 +31,6 @@
     if (profile) link.href = `profile.html?actor=${profile.slug}`;
   });
 
-  const backTop = document.createElement("button");
-  backTop.className = "back-top";
-  backTop.type = "button";
-  backTop.setAttribute("aria-label", "Подняться в начало страницы");
-  backTop.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>';
-  document.body.appendChild(backTop);
-  const syncBackTop = () => backTop.classList.toggle("is-visible", window.scrollY > 700);
-  backTop.addEventListener("click", () => window.scrollTo({
-    top: 0,
-    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
-  }));
-  addEventListener("scroll", syncBackTop, { passive: true });
-  syncBackTop();
-
   const actorFilter = new URLSearchParams(window.location.search).get("actor");
   if (document.body.classList.contains("news-page") && actorFilter) {
     const actor = bySlug.get(actorFilter);

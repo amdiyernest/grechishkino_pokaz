@@ -381,28 +381,6 @@ footer { margin-top: 0 !important; }
 .profile-page--limited .profile-intro { min-height: calc(82svh - 72px); }
 .profile-page--limited .profile-facts { grid-template-columns: repeat(2, minmax(120px, 180px)); }
 
-.back-top {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 70;
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--paper);
-  color: var(--ink);
-  box-shadow: 0 12px 30px -18px rgba(20,20,20,.45);
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(8px);
-  transition: opacity .18s ease, transform .18s ease, color .18s ease, border-color .18s ease;
-}
-.back-top.is-visible { opacity: 1; pointer-events: auto; transform: none; }
-.back-top:hover { color: var(--wine); border-color: var(--wine); }
 
 @media (max-width: 900px) {
   .wrap { padding-inline: 22px !important; }
@@ -441,7 +419,6 @@ footer { margin-top: 0 !important; }
   .news-page .ncard,
   .home-page #news .ncard { align-items: start; column-gap: 14px; }
   .news-article-page section.block { padding-top: 20px !important; }
-  .back-top { right: 14px; bottom: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
