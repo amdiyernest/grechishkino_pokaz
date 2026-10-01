@@ -1,6 +1,6 @@
 (() => {
   const profiles = [
-    { slug: "yuriy-kolokolnikov", first: "Юрий", last: "Колокольников", menu: "Колокольников Юрий", gender: "m", age: "45 лет", height: "198 см", image: "actor_kolokolnikov.jpg", portrait: "portrait_main.jpg", eyes: "Серо-зеленые", hair: "Блондин", rich: true, summary: "Актер театра и кино. Более 70 проектов, среди которых \"Игра престолов\", \"Тенет\", \"Последний Ронин\" и \"Мастер и Маргарита\"." },
+    { slug: "yuriy-kolokolnikov", first: "Юрий", last: "Колокольников", newsFirst: "Юрия", newsFull: "Юрия Колокольникова", menu: "Колокольников Юрий", gender: "m", age: "45 лет", birthday: "15 декабря 1980", height: "198 см", image: "actor_kolokolnikov.jpg", portrait: "portrait_main.jpg", rich: true, summary: "Актер театра и кино. Более 70 проектов, среди которых \"Игра престолов\", \"Тенет\", \"Последний Ронин\" и \"Мастер и Маргарита\"." },
     { slug: "anna-ukolova", first: "Анна", last: "Уколова", menu: "Уколова Анна", gender: "f", age: "48 лет", height: "181 см", image: "actor_ukolova.jpg" },
     { slug: "aleksandr-golovin", first: "Александр", last: "Головин", menu: "Головин Александр", gender: "m", age: "37 лет", height: "171 см", image: "actor_golovin.jpg" },
     { slug: "aleksandra-florinskaya", first: "Александра", last: "Флоринская", menu: "Флоринская Александра", gender: "f", age: "48 лет", height: "182 см", image: "actor_florinskaya.jpg" },
@@ -31,6 +31,42 @@
     if (profile) link.href = `profile.html?actor=${profile.slug}`;
   });
 
+  const backTop = document.createElement("button");
+  backTop.className = "back-top";
+  backTop.type = "button";
+  backTop.setAttribute("aria-label", "Подняться в начало страницы");
+  backTop.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>';
+  document.body.appendChild(backTop);
+  const syncBackTop = () => backTop.classList.toggle("is-visible", window.scrollY > 700);
+  backTop.addEventListener("click", () => window.scrollTo({
+    top: 0,
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+  }));
+  addEventListener("scroll", syncBackTop, { passive: true });
+  syncBackTop();
+
+  const actorFilter = new URLSearchParams(window.location.search).get("actor");
+  if (document.body.classList.contains("news-page") && actorFilter) {
+    const actor = bySlug.get(actorFilter);
+    if (actor) {
+      const actorName = `${actor.first} ${actor.last}`;
+      const heading = document.querySelector(".head .h1");
+      const lead = document.querySelector(".head .lead");
+      if (heading) heading.innerHTML = `Новости <b>${actor.newsFirst || actor.first}</b>`;
+      if (lead) {
+        lead.textContent = `Все публикации агентства с участием ${actor.newsFull || actorName}. `;
+        const allNews = document.createElement("a");
+        allNews.href = "news.html";
+        allNews.textContent = "Показать все новости";
+        lead.appendChild(allNews);
+      }
+      document.querySelectorAll(".newsgrid .ncard").forEach(card => {
+        card.hidden = card.querySelector(".ntag")?.textContent.trim() !== actorName;
+      });
+      document.title = `Новости ${actorName} - Grechishkino`;
+    }
+  }
+
   const intro = document.querySelector(".profile-intro");
   if (!intro) return;
 
@@ -51,22 +87,28 @@
 
   const facts = [...intro.querySelectorAll(".profile-fact")];
   facts[0].querySelector("dd").textContent = profile.age;
-  facts[1].querySelector("dd").textContent = profile.height;
-  if (profile.eyes && profile.hair) {
-    facts[2].querySelector("dd").textContent = profile.eyes;
-    facts[3].querySelector("dd").textContent = profile.hair;
-  } else {
-    facts[2].hidden = true;
-    facts[3].hidden = true;
-  }
+  facts[1].querySelector("dd").textContent = profile.birthday || "";
+  facts[1].hidden = !profile.birthday;
+  facts[2].querySelector("dd").textContent = profile.height;
 
   const requestButton = intro.querySelector(".profile-actions .btn.primary");
   requestButton.textContent = profile.gender === "f" ? "Запросить актрису" : "Запросить актера";
+  const downloadButton = intro.querySelector(".profile-actions .btn.ghost");
+  if (downloadButton) {
+    downloadButton.href = `assets/${profile.portrait || profile.image}`;
+    downloadButton.download = `${profile.slug}.jpg`;
+  }
+  const actorNewsLink = document.querySelector("#actor-news .sec-note a");
+  if (actorNewsLink) {
+    actorNewsLink.href = `news.html?actor=${profile.slug}`;
+    actorNewsLink.textContent = `Все новости ${profile.newsFirst || profile.first}`;
+  }
 
   if (!profile.rich) {
     document.body.classList.add("profile-page--limited");
     intro.querySelector(".profile-actions .btn.ghost").hidden = true;
     intro.querySelector(".profile-links").hidden = true;
+    document.querySelector(".profile-jump-nav").hidden = true;
     document.querySelectorAll("#photos, #video, .role-strip, #filmography, .role-gallery, #actor-news").forEach(section => { section.hidden = true; });
 
     const footerTitle = document.querySelector("#contact .f-cta h2");
@@ -78,4 +120,18 @@
   document.querySelectorAll("#more .acard").forEach(card => {
     if (card.querySelector(".cap b")?.textContent.trim() === fullName) card.hidden = true;
   });
+})();
+
+// Кнопка "Наверх": общая для всех страниц, появляется после первого экрана.
+(() => {
+  const btn = document.createElement("button");
+  btn.className = "to-top";
+  btn.type = "button";
+  btn.setAttribute("aria-label", "Наверх");
+  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  document.body.appendChild(btn);
+  const toggle = () => btn.classList.toggle("on", window.scrollY > window.innerHeight);
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
 })();

@@ -387,22 +387,42 @@
 </div>
 
 
-<!-- Первый экран: фото и актерская визитка -->
+<!-- Первый экран: портрет слева, данные и видео справа -->
 <header id="top">
   <div class="wrap profile-intro">
     <img class="profile-portrait" src="assets/portrait_main.jpg" alt="Юрий Колокольников">
     <div class="profile-copy">
       <h1>Юрий <span>Колокольников</span></h1>
       <p class="profile-summary">Актер театра и кино. Более 70 проектов, среди которых "Игра престолов", "Тенет", "Последний Ронин" и "Мастер и Маргарита".</p>
+      <div class="profile-video" id="video">
+        <div class="profile-video-head">
+          <h2>Видео</h2>
+          <button class="video-share" id="videoShare" type="button" aria-describedby="shareStatus">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"></path></svg>
+            <span>Поделиться</span>
+          </button>
+          <span class="share-status" id="shareStatus" role="status" aria-live="polite"></span>
+        </div>
+        <a class="vmain" id="vmain" href="#video" aria-label="Смотреть шоурил" data-video-key="showreel" style="background-image:linear-gradient(180deg,rgba(20,20,20,.02),rgba(20,20,20,.7)),url('assets/poster_lastronin.jpg')">
+          <span class="shade"></span>
+          <span class="play"></span>
+          <span class="cap"><b id="vcap">Шоурил</b><span id="vsub">2:14</span></span>
+        </a>
+        <div class="profile-video-list" aria-label="Выберите видео">
+          <button class="video-choice vth on" type="button" data-video-key="showreel" data-img="assets/poster_lastronin.jpg" data-cap="Шоурил" data-sub="2:14"><span>01</span><b>Шоурил</b><small>2:14</small></button>
+          <button class="video-choice vth" type="button" data-video-key="vizitka" data-img="assets/vth_vizitka.jpg" data-cap="Визитка" data-sub="0:58"><span>02</span><b>Визитка</b><small>0:58</small></button>
+          <button class="video-choice vth" type="button" data-video-key="interview" data-img="assets/vth_interview.jpg" data-cap="Интервью" data-sub="8:42"><span>03</span><b>Интервью</b><small>8:42</small></button>
+          <button class="video-choice vth" type="button" data-video-key="film-fragment" data-img="assets/news_levsha.jpg" data-cap="Фрагмент из фильма" data-sub="1:36"><span>04</span><b>Фрагмент</b><small>1:36</small></button>
+        </div>
+      </div>
       <dl class="profile-facts">
         <div class="profile-fact"><dt>Возраст</dt><dd>45 лет</dd></div>
+        <div class="profile-fact"><dt>Дата рождения</dt><dd>15 декабря 1980</dd></div>
         <div class="profile-fact"><dt>Рост</dt><dd>198 см</dd></div>
-        <div class="profile-fact"><dt>Глаза</dt><dd>Серо-зеленые</dd></div>
-        <div class="profile-fact"><dt>Волосы</dt><dd>Блондин</dd></div>
       </dl>
       <div class="profile-actions">
         <a class="btn primary" href="#contact">Запросить актера</a>
-        <a class="btn ghost" href="#photos">Скачать фото</a>
+        <a class="btn ghost" href="assets/portrait_main.jpg" download="yuriy-kolokolnikov.jpg">Скачать фото</a>
       </div>
       <div class="profile-links" aria-label="Профили актера">
         <a href="https://casting.filmtoolz.ru/420385/"><img src="assets/icon_filmtoolz_color.svg" alt="">FilmToolz</a>
@@ -414,6 +434,15 @@
   </div>
 </header>
 
+<nav class="profile-jump-nav" aria-label="Разделы профиля">
+  <div class="wrap">
+    <a href="#photos">Фото</a>
+    <a href="#video">Видео</a>
+    <a href="#filmography">Фильмография</a>
+    <a href="#actor-news">Новости</a>
+  </div>
+</nav>
+
 <!-- Фотографии: крупная двухрядная подача по референсу -->
 <section class="profile-gallery" id="photos" aria-label="Фотографии Юрия Колокольникова">
   <div class="gallery">
@@ -421,39 +450,12 @@
     <figure><img src="assets/photo2.jpg" alt="Юрий Колокольников, образ для съемок"></figure>
     <figure><img src="assets/photo3.jpg" alt="Юрий Колокольников, крупный план"></figure>
     <figure><img src="assets/photo4.jpg" alt="Юрий Колокольников, актерский портрет"></figure>
-  </div>
-</section>
-
-<!-- Видео: большой экран и навигация по роликам -->
-<section class="video-stage" id="video">
-  <div class="wrap">
-    <div>
-      <h2>Видео Юрия</h2>
-      <a class="vmain" id="vmain" href="#" aria-label="Смотреть шоурил" style="background-image:linear-gradient(180deg,rgba(20,20,20,.02),rgba(20,20,20,.7)),url('assets/poster_lastronin.jpg')">
-        <span class="shade"></span>
-        <span class="play"></span>
-        <span class="cap"><b id="vcap">Шоурил</b><span id="vsub">2:14</span></span>
-      </a>
-    </div>
-    <div>
-      <p class="video-menu-title">Выберите видео</p>
-      <div class="video-menu">
-        <button class="video-choice vth on" type="button" data-img="assets/poster_lastronin.jpg" data-cap="Шоурил" data-sub="2:14"><span>01</span><b>Шоурил</b><small>2:14</small></button>
-        <button class="video-choice vth" type="button" data-img="assets/vth_vizitka.jpg" data-cap="Визитка" data-sub="0:58"><span>02</span><b>Визитка</b><small>0:58</small></button>
-        <button class="video-choice vth" type="button" data-img="assets/vth_interview.jpg" data-cap="Интервью" data-sub="8:42"><span>03</span><b>Интервью</b><small>8:42</small></button>
-        <button class="video-choice vth" type="button" data-img="assets/news_levsha.jpg" data-cap="Фрагмент из фильма" data-sub="1:36"><span>04</span><b>Фрагмент из фильма</b><small>1:36</small></button>
-      </div>
-    </div>
+    <figure><img src="assets/portrait_main.jpg" alt="Юрий Колокольников, портрет на светлом фоне" loading="lazy"></figure>
+    <figure><img src="assets/actor_kolokolnikov.jpg" alt="Юрий Колокольников, портрет для каталога" loading="lazy"></figure>
   </div>
 </section>
 
 <!-- Кадры и образы между содержательными блоками -->
-<section class="role-strip" aria-label="Фотографии актера в образах">
-  <figure><img src="assets/photo1.jpg" alt="Юрий Колокольников, портрет" loading="lazy"></figure>
-  <figure><img src="assets/photo2.jpg" alt="Юрий Колокольников в образе" loading="lazy"></figure>
-  <figure><img src="assets/photo3.jpg" alt="Юрий Колокольников, крупный план" loading="lazy"></figure>
-  <figure><img src="assets/photo4.jpg" alt="Юрий Колокольников, актерский портрет" loading="lazy"></figure>
-</section>
 
 <!-- Фильмография: текстовый список с живым превью -->
 <section class="film-editorial" id="filmography">
@@ -467,28 +469,28 @@
       <div>
         <div class="film-list" id="filmList">
           <a class="film-row" href="#" data-preview="assets/poster_polden.jpg" data-caption="Полдень, в производстве">
-            <span class="film-year">2026</span><span class="film-name">Полдень<span class="film-status">В производстве</span></span><span class="film-meta">реж. Клим Козинский<br>Максим Каммерер, главная роль</span>
+            <span class="film-year">2026</span><span class="film-name">Полдень<span class="film-status">В производстве</span></span><span class="film-meta">реж. Клим Козинский<br>Максим Каммерер, <strong>главная</strong></span>
           </a>
           <a class="film-row" href="#" data-preview="assets/poster_taynyygorod.jpg" data-caption="Тайный город, в производстве">
             <span class="film-year">2026</span><span class="film-name">Тайный город<span class="film-status">В производстве</span></span><span class="film-meta">реж. Андрей Туманов<br>Саньтяго</span>
           </a>
           <a class="film-row" href="#" data-preview="assets/poster_lastronin.jpg" data-caption="Последний Ронин, 2024">
-            <span class="film-year">2024</span><span class="film-name">Последний Ронин</span><span class="film-meta">реж. Макс Шишкин<br>Ронин, главная роль</span>
+            <span class="film-year">2024</span><span class="film-name">Последний Ронин</span><span class="film-meta">реж. Макс Шишкин<br>Ронин, <strong>главная</strong></span>
           </a>
           <a class="film-row" href="#" data-preview="assets/poster_volshebnik.jpg" data-caption="Волшебник Изумрудного города, 2024">
             <span class="film-year">2024</span><span class="film-name">Волшебник Изумрудного города</span><span class="film-meta">реж. Игорь Волошин<br>Железный дровосек</span>
           </a>
           <a class="film-row" href="#" data-preview="assets/poster_besprintsipnye.jpg" data-caption="Беспринципные, 4 сезон, 2024">
-            <span class="film-year">2024</span><span class="film-name">Беспринципные, 4 сезон</span><span class="film-meta">реж. Роман Прыгунов<br>Роман</span>
+            <span class="film-year">2024</span><span class="film-name">Беспринципные, 4 сезон</span><span class="film-meta">Кинопоиск HD<br>реж. Роман Прыгунов · Роман</span>
           </a>
           <a class="film-row is-hidden" href="#" data-preview="assets/news_levsha.jpg" data-caption="Левша, 2026">
-            <span class="film-year">2026</span><span class="film-name">Левша</span><span class="film-meta">реж. Владимир Беседин<br>Левша, главная роль</span>
+            <span class="film-year">2026</span><span class="film-name">Левша</span><span class="film-meta">реж. Владимир Беседин<br>Левша, <strong>главная</strong></span>
           </a>
           <a class="film-row is-hidden" href="#" data-preview="assets/news_kholod.jpg" data-caption="Яга на вашу голову, 2025">
             <span class="film-year">2025</span><span class="film-name">Яга на вашу голову</span><span class="film-meta">реж. Александр Войтинский<br>Артем Виноградов</span>
           </a>
           <a class="film-row is-hidden" href="#" data-preview="assets/news_taynyygorod.jpg" data-caption="Амура, 2024">
-            <span class="film-year">2024</span><span class="film-name">Амура</span><span class="film-meta">реж. Андрей Джунковский<br>Ермак, главная роль</span>
+            <span class="film-year">2024</span><span class="film-name">Амура</span><span class="film-meta">KION<br>реж. Андрей Джунковский · Ермак, <strong>главная</strong></span>
           </a>
           <a class="film-row is-hidden" href="#" data-preview="assets/news_besprintsipnye5.jpg" data-caption="По щучьему велению, 2023">
             <span class="film-year">2023</span><span class="film-name">По щучьему велению</span><span class="film-meta">реж. Александр Войтинский<br>Лорд Ротман</span>
@@ -500,18 +502,10 @@
   </div>
 </section>
 
-<!-- Финальная линия фотографий перед новостями -->
-<section class="role-gallery" aria-label="Юрий Колокольников в кино">
-  <figure><img src="assets/photo4.jpg" alt="Юрий Колокольников, актерский портрет" loading="lazy"></figure>
-  <figure><img src="assets/photo2.jpg" alt="Юрий Колокольников в образе" loading="lazy"></figure>
-  <figure><img src="assets/portrait_main.jpg" alt="Юрий Колокольников, портрет" loading="lazy"></figure>
-  <figure><img src="assets/photo1.jpg" alt="Юрий Колокольников, портрет" loading="lazy"></figure>
-</section>
-
 <!-- НОВОСТИ АКТЕРА: отдельный блок, не смешан с фильмографией -->
 <section class="block reveal" id="actor-news">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-title">Новости Юрия</span><span class="sec-note"><a href="news.html">Все новости агентства</a></span></div>
+    <div class="sec-head"><span class="sec-title">Новости Юрия</span><span class="sec-note"><a href="news.html?actor=yuriy-kolokolnikov">Все новости Юрия</a></span></div>
     <div class="newsgrid">
       <a class="ncard" href="news-article.html">
         <img src="assets/news_taynyygorod.jpg" alt="Тайный город" loading="lazy">
@@ -563,7 +557,7 @@
     <div class="f-mid">
       <div class="f-brand">
         <div class="f-logo">GRECHISHKINO</div>
-        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео, фотографии, фильмография.</p>
       </div>
       <div class="f-col">
         <div class="f-k">Разделы</div>
@@ -589,8 +583,7 @@
       </div>
     </div>
     <div class="f-legal">
-      <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
-      <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
+      <span>ИП Гречишкина Ирина Васильевна · ИНН 774320736778 · ОГРНИП 318774600031791</span>
       <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
       <span>* Instagram - продукт Meta, признанной экстремистской и запрещенной в РФ</span>
       <span>© 2026 Актерское агентство "Гречишкино"</span>
@@ -599,13 +592,24 @@
 </footer>
 
 <!-- ВСЕ ФОТО НА ВЕСЬ ЭКРАН -->
-<div class="gbox" id="gbox" role="dialog" aria-label="Все фото актера">
+<div class="gbox" id="gbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Все фото актера">
   <button class="gclose" type="button" aria-label="Закрыть галерею"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   <div class="gstrip" id="gstrip">
     <img src="assets/photo1.jpg" alt="Образ 1" loading="lazy">
     <img src="assets/photo2.jpg" alt="Образ 2" loading="lazy">
     <img src="assets/photo3.jpg" alt="Образ 3" loading="lazy">
     <img src="assets/photo4.jpg" alt="Образ 4" loading="lazy">
+    <img src="assets/portrait_main.jpg" alt="Образ 5" loading="lazy">
+    <img src="assets/actor_kolokolnikov.jpg" alt="Образ 6" loading="lazy">
+  </div>
+  <div class="gtools">
+    <button class="gstep gprev" type="button" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <span class="gcount" id="gcount">1 / 6</span>
+    <button class="gstep gnext" type="button" aria-label="Следующее фото"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+    <a class="gdownload" id="gdownload" href="assets/photo1.jpg" download="yuriy-kolokolnikov-01.jpg">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg>
+      Скачать фото
+    </a>
   </div>
 </div>
 
@@ -683,22 +687,63 @@
 
   // галерея на весь экран: морефото и клик по образу
   const gbox=document.getElementById('gbox'),gstrip=document.getElementById('gstrip');
-  function gOpen(i){
-    gbox.classList.add('open');
-    document.body.style.overflow='hidden';
-    const im=gstrip.children[i||0];
-    if(im)im.scrollIntoView({inline:'center',block:'nearest'});
+  const gimages=[...gstrip.querySelectorAll('img')],gcount=document.getElementById('gcount'),gdownload=document.getElementById('gdownload');
+  let galleryIndex=0,galleryReturnFocus=null;
+  function syncGallery(i){
+    galleryIndex=Math.max(0,Math.min(gimages.length-1,i));
+    const image=gimages[galleryIndex];
+    gcount.textContent=`${galleryIndex+1} / ${gimages.length}`;
+    gdownload.href=image.getAttribute('src');
+    gdownload.download=`yuriy-kolokolnikov-${String(galleryIndex+1).padStart(2,'0')}.jpg`;
   }
-  function gClose(){gbox.classList.remove('open');document.body.style.overflow=''}
+  function goGallery(i){
+    syncGallery((i+gimages.length)%gimages.length);
+    gimages[galleryIndex].scrollIntoView({inline:'center',block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
+  function gOpen(i){
+    galleryReturnFocus=document.activeElement;
+    gbox.classList.add('open');
+    gbox.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    syncGallery(i||0);
+    const im=gimages[galleryIndex];
+    if(im)im.scrollIntoView({inline:'center',block:'nearest'});
+    gbox.querySelector('.gclose').focus();
+  }
+  function gClose(){gbox.classList.remove('open');gbox.setAttribute('aria-hidden','true');document.body.style.overflow='';galleryReturnFocus?.focus()}
   const morePhoto=document.querySelector('.morefoto');
   if(morePhoto)morePhoto.addEventListener('click',(e)=>{e.preventDefault();gOpen(0)});
-  document.querySelectorAll('.gallery figure').forEach((f,i)=>{f.style.cursor='zoom-in';f.addEventListener('click',()=>gOpen(i))});
+  document.querySelectorAll('.gallery figure').forEach((f,i)=>{
+    f.style.cursor='zoom-in';f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label',`Открыть фото ${i+1} на весь экран`);
+    f.addEventListener('click',()=>gOpen(i));
+    f.addEventListener('keydown',(e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();gOpen(i)}});
+  });
   gbox.querySelector('.gclose').addEventListener('click',gClose);
-  document.addEventListener('keydown',(e)=>{if(e.key==='Escape')gClose()});
+  gbox.querySelector('.gprev').addEventListener('click',()=>goGallery(galleryIndex-1));
+  gbox.querySelector('.gnext').addEventListener('click',()=>goGallery(galleryIndex+1));
+  let galleryTicking=false;
+  gstrip.addEventListener('scroll',()=>{
+    if(galleryTicking)return;
+    galleryTicking=true;
+    requestAnimationFrame(()=>{
+      galleryTicking=false;
+      const center=gstrip.getBoundingClientRect().left+gstrip.clientWidth/2;
+      let nearest=0,distance=Infinity;
+      gimages.forEach((image,index)=>{const rect=image.getBoundingClientRect(),d=Math.abs(rect.left+rect.width/2-center);if(d<distance){distance=d;nearest=index}});
+      syncGallery(nearest);
+    });
+  },{passive:true});
+  document.addEventListener('keydown',(e)=>{
+    if(!gbox.classList.contains('open'))return;
+    if(e.key==='Escape')gClose();
+    if(e.key==='ArrowLeft')goGallery(galleryIndex-1);
+    if(e.key==='ArrowRight')goGallery(galleryIndex+1);
+  });
 
   // Фотографии в первом экране открывают ту же полноэкранную галерею.
   // переключение видео по превью
   const vmain=document.getElementById('vmain'),vcap=document.getElementById('vcap'),vsub=document.getElementById('vsub');
+  const videoShare=document.getElementById('videoShare'),shareStatus=document.getElementById('shareStatus');
   if(vmain)vmain.addEventListener('click',(e)=>e.preventDefault());
   document.querySelectorAll('.vth').forEach(t=>{
     t.addEventListener('click',()=>{
@@ -707,8 +752,34 @@
       vmain.style.backgroundImage="linear-gradient(180deg,rgba(20,20,20,.05),rgba(20,20,20,.55)),url('"+t.dataset.img+"')";
       vcap.textContent=t.dataset.cap;
       vsub.textContent=t.dataset.sub;
+      vmain.dataset.videoKey=t.dataset.videoKey;
     });
   });
+  const requestedVideo=new URLSearchParams(location.search).get('video');
+  if(requestedVideo){document.querySelector(`.vth[data-video-key="${CSS.escape(requestedVideo)}"]`)?.click()}
+  if(videoShare){
+    videoShare.addEventListener('click',async()=>{
+      const shareUrl=new URL(location.href);
+      shareUrl.searchParams.set('video',vmain.dataset.videoKey||'showreel');
+      shareUrl.hash='video';
+      try{
+        let copied=false;
+        if(navigator.clipboard&&window.isSecureContext){
+          try{await navigator.clipboard.writeText(shareUrl.toString());copied=true}catch{}
+        }
+        if(!copied){
+          const field=document.createElement('textarea');field.value=shareUrl.toString();field.setAttribute('readonly','');field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();document.execCommand('copy');field.remove();
+          copied=true;
+        }
+        videoShare.classList.add('is-copied');
+        videoShare.querySelector('span').textContent='Ссылка скопирована';
+        shareStatus.textContent='Можно отправить ссылку на выбранное видео.';
+        setTimeout(()=>{videoShare.classList.remove('is-copied');videoShare.querySelector('span').textContent='Поделиться';shareStatus.textContent=''},2400);
+      }catch{
+        shareStatus.textContent='Не удалось скопировать. Скопируйте адрес страницы из браузера.';
+      }
+    });
+  }
 
   // Фильмография: превью меняется при наведении и фокусе, список раскрывается по запросу.
   const filmPreview=document.getElementById('filmPreview'),filmCaption=document.getElementById('filmPreviewCaption');

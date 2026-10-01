@@ -38,7 +38,6 @@ a { text-underline-offset: .2em; }
 .eyebrow { display: none !important; }
 .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 .pagenav { display: none !important; }
-.chat { display: none !important; }
 
 /* Общая шапка: спокойная рабочая навигация вместо плавающей пилюли. */
 .nav-shell {
@@ -260,9 +259,15 @@ section.block { padding-block: clamp(48px, 6vw, 88px) !important; }
   border-radius: 0 !important;
   box-shadow: none !important;
 }
-.chatline { background: var(--ink) !important; color: var(--paper) !important; }
-.chatline .ic { display: none !important; }
-.chatline span { color: rgba(255, 255, 255, .72) !important; }
+.chatline {
+  justify-content: center;
+  background: var(--wine-tint) !important;
+  color: var(--ink) !important;
+  border-block: 1px solid var(--wine-soft) !important;
+}
+.chatline .ic { display: flex !important; }
+.chatline span { color: var(--gray) !important; }
+.chatline .btn { margin-top: 8px !important; }
 .callback { background: var(--paper) !important; border-block: 1px solid var(--line) !important; }
 .callback p { color: var(--gray) !important; }
 .cform input[type="text"],
@@ -273,6 +278,8 @@ section.block { padding-block: clamp(48px, 6vw, 88px) !important; }
   border-radius: 0 !important;
   background: transparent !important;
 }
+.cfield { display: flex; flex-direction: column; gap: 2px; }
+.cfield > span { color: var(--gray); font-size: 12px; }
 .cform .agree { color: var(--gray) !important; }
 .socials-row { padding-block: 8px; border-block: 1px solid var(--line); }
 .socials-row a { border: 0 !important; padding: 10px 12px 10px 0 !important; }
@@ -296,6 +303,20 @@ section.block { padding-block: clamp(48px, 6vw, 88px) !important; }
 .ch-preset { border-color: var(--line) !important; }
 
 footer { margin-top: 0 !important; }
+.f-mid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 28px 56px !important;
+}
+.f-brand {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(200px, .7fr) minmax(280px, 1.3fr);
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.f-brand p { margin-top: 0 !important; max-width: 52ch !important; }
 .f-k { font-family: inherit !important; font-size: 11px !important; }
 .f-cta h2 { font-size: 24px; font-weight: 800; }
 .callback h2 { font-size: 22px; font-weight: 800; }
@@ -328,6 +349,11 @@ footer { margin-top: 0 !important; }
 .news-page .lead { margin-top: 16px !important; }
 .news-page > section.block:first-of-type { padding-top: 56px !important; }
 .news-page .ncard .nbody { padding-top: 18px !important; }
+.news-page .lead a { color: var(--wine); font-weight: 700; }
+
+/* Статья начинается рядом с навигацией, без пустого экрана под шапкой. */
+.news-article-page section.block { padding-top: 32px !important; }
+.news-article-page .art { padding-top: 0; }
 
 /* Каталог сохраняет фильтры, но отдает пространство людям, а не панели управления. */
 .catalog-page .head { padding: 28px 0 8px !important; }
@@ -355,6 +381,29 @@ footer { margin-top: 0 !important; }
 .profile-page--limited .profile-intro { min-height: calc(82svh - 72px); }
 .profile-page--limited .profile-facts { grid-template-columns: repeat(2, minmax(120px, 180px)); }
 
+.back-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 70;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 12px 30px -18px rgba(20,20,20,.45);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .18s ease, transform .18s ease, color .18s ease, border-color .18s ease;
+}
+.back-top.is-visible { opacity: 1; pointer-events: auto; transform: none; }
+.back-top:hover { color: var(--wine); border-color: var(--wine); }
+
 @media (max-width: 900px) {
   .wrap { padding-inline: 22px !important; }
   .nav { min-height: 64px; }
@@ -367,6 +416,8 @@ footer { margin-top: 0 !important; }
   .person + .person { border-top: 1px solid var(--line) !important; }
   .chat { width: auto !important; height: auto !important; padding: 12px 14px !important; }
   .chat .chat-txt { display: inline !important; }
+  .f-mid { grid-template-columns: 1fr 1fr !important; gap: 28px 36px !important; }
+  .f-brand { grid-template-columns: 1fr; gap: 10px; }
 }
 
 @media (max-width: 560px) {
@@ -374,6 +425,7 @@ footer { margin-top: 0 !important; }
   .h1, .name { font-size: clamp(2.45rem, 13vw, 4rem) !important; }
   .chat { right: 14px !important; bottom: 14px !important; font-size: 13px !important; }
   .f-mid { gap: 26px !important; }
+  .f-mid { grid-template-columns: 1fr !important; }
   .f-cta h2 { font-size: 20px; line-height: 1.2; }
   .home-page .head { padding-top: 24px !important; }
   .home-page section.block.first { padding-top: 20px !important; }
@@ -388,8 +440,23 @@ footer { margin-top: 0 !important; }
   .news-page > section.block:first-of-type { padding-top: 32px !important; }
   .news-page .ncard,
   .home-page #news .ncard { align-items: start; column-gap: 14px; }
+  .news-article-page section.block { padding-top: 20px !important; }
+  .back-top { right: 14px; bottom: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Кнопка "Наверх" над кнопкой чата. */
+.to-top {
+  position: fixed; right: 24px; bottom: 84px; z-index: 79;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 6px;
+  box-shadow: 0 12px 30px -18px rgba(20, 20, 20, .5); cursor: pointer;
+  opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s;
+}
+.to-top.on { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { color: var(--wine); border-color: var(--wine); }
+.to-top svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 560px) { .to-top { right: 14px; bottom: 70px; } }

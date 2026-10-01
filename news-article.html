@@ -155,6 +155,7 @@
     .art{grid-template-columns:1fr;gap:24px}
     .artside{position:static;flex-direction:row;flex-wrap:wrap;gap:8px}
     .artside .back{width:100%;margin-bottom:4px}
+    .artside .sk,.artside .sl{display:none}
     .article .ahero{float:none;width:100%;max-width:360px;margin:0 0 18px}
   }
   @media (max-width:560px){
@@ -167,7 +168,7 @@
 <link rel="stylesheet" href="assets/design-system.css">
 <script src="assets/actor-profiles.js" defer></script>
 </head>
-<body>
+<body class="news-article-page">
 
 <!-- NAV -->
 <div class="nav-shell">
@@ -294,7 +295,7 @@
     <div class="f-mid">
       <div class="f-brand">
         <div class="f-logo">GRECHISHKINO</div>
-        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео, фотографии, фильмография.</p>
       </div>
       <div class="f-col">
         <div class="f-k">Разделы</div>
@@ -320,8 +321,7 @@
       </div>
     </div>
     <div class="f-legal">
-      <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
-      <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
+      <span>ИП Гречишкина Ирина Васильевна · ИНН 774320736778 · ОГРНИП 318774600031791</span>
       <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
       <span>* Instagram - продукт Meta, признанной экстремистской и запрещенной в РФ</span>
       <span>© 2026 Актерское агентство "Гречишкино"</span>

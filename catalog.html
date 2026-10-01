@@ -240,8 +240,8 @@
 <!-- ЗАГОЛОВОК + ФИЛЬТРЫ -->
 <header class="head">
   <div class="wrap reveal">
-    <h1 class="h1">Найдите <b>своего</b> актера</h1>
-    <p class="lead">Фильтры по полу, возрасту и росту. Каждая карточка ведет в профиль: видео, фото-образы, фильмография.</p>
+    <h1 class="h1">Артисты <b>агентства</b></h1>
+    <p class="lead">Фильтры по полу, возрасту и росту. В профиле - видео, фотографии и фильмография.</p>
 
     <div class="filters" id="filters">
       <div class="frow">
@@ -316,7 +316,7 @@
     <div class="f-mid">
       <div class="f-brand">
         <div class="f-logo">GRECHISHKINO</div>
-        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео, фотографии, фильмография.</p>
       </div>
       <div class="f-col">
         <div class="f-k">Разделы</div>
@@ -342,8 +342,7 @@
       </div>
     </div>
     <div class="f-legal">
-      <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
-      <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
+      <span>ИП Гречишкина Ирина Васильевна · ИНН 774320736778 · ОГРНИП 318774600031791</span>
       <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
       <span>* Instagram - продукт Meta, признанной экстремистской и запрещенной в РФ</span>
       <span>© 2026 Актерское агентство "Гречишкино"</span>
@@ -478,6 +477,13 @@
   if(preset){
     document.querySelector('.fchip[data-k="g"][data-v="'+preset+'"]').click();
   }
+  const catalogHeading=document.querySelector('.catalog-page .h1');
+  const headingBySection={
+    male:'Актеры <b>агентства</b>',
+    female:'Актрисы <b>агентства</b>',
+    new:'Новые <b>лица</b> агентства'
+  };
+  if(catalogHeading)catalogHeading.innerHTML=headingBySection[f]||'Артисты <b>агентства</b>';
   // подсветка нужного пункта в навигации по разделу (без хардкода)
   const navKey=(f==='female'||f==='new')?f:'male';
   document.querySelectorAll('.nav .links a[href*="f='+navKey+'"]').forEach(a=>a.classList.add('on'));

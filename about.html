@@ -80,20 +80,29 @@
   .sec-title{font-size:24px;font-weight:800;letter-spacing:-.01em}
   .sec-note{margin-left:auto;font-size:13px;color:var(--gray)}
 
-  /* позиционирование: актер -> агентство -> индустрия */
-  .bridge{display:grid;grid-template-columns:1fr minmax(210px,260px) 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .bridge-side{padding:38px 0}
-  .bridge-side:last-child{text-align:right}
-  .bridge-side:last-child p{margin-left:auto}
-  .bridge-side h2{font-size:clamp(28px,4vw,44px);line-height:1;margin:0;font-weight:800;letter-spacing:-.03em}
-  .bridge-side p{font-size:14px;color:var(--gray);line-height:1.6;max-width:34ch;margin:14px 0 0}
-  .bridge-center{background:var(--wine);color:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 16px}
-  .bridge-center b{font-size:15px;letter-spacing:.12em;text-transform:uppercase}
-  .bridge-center span{font-size:12px;line-height:1.8;margin-top:12px;opacity:.84}
+  /* принцип треугольника: актер, агентство и индустрия */
+  .triangle-layout{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(560px,1.28fr);gap:clamp(38px,7vw,94px);align-items:center;padding-block:18px 28px}
+  .triangle-copy h2{max-width:10ch;font-size:clamp(31px,4vw,50px);line-height:1.02;letter-spacing:-.035em}
+  .triangle-copy p{max-width:42ch;margin-top:20px;color:var(--gray);font-size:15px;line-height:1.7}
+  .triangle-copy strong{color:var(--ink)}
+  .triangle-diagram{position:relative;min-height:500px;border-block:1px solid var(--line)}
+  .triangle-lines{position:absolute;inset:8% 7% 7%;width:86%;height:85%;overflow:visible}
+  .triangle-lines path{fill:none;stroke:rgba(20,20,20,.72);stroke-width:1.5;vector-effect:non-scaling-stroke}
+  .triangle-lines circle{fill:var(--wine)}
+  .triangle-node{position:absolute;width:min(230px,38%);padding:17px 18px;background:var(--paper);border:1px solid var(--line)}
+  .triangle-node b{display:block;font-size:clamp(19px,2.2vw,27px);line-height:1.1;letter-spacing:-.025em}
+  .triangle-node span{display:block;margin-top:7px;color:var(--gray);font-size:12px;line-height:1.5}
+  .triangle-node--industry{top:5%;left:50%;transform:translateX(-50%);text-align:center}
+  .triangle-node--agency{left:0;bottom:4%;border-color:var(--wine);background:var(--wine);color:#fff}
+  .triangle-node--agency span{color:rgba(255,255,255,.78)}
+  .triangle-node--actor{right:0;bottom:4%;text-align:right}
+  .triangle-core{position:absolute;left:50%;top:56%;width:150px;min-height:106px;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translate(-50%,-50%);padding:18px;border-radius:50%;background:var(--paper);border:1px solid var(--wine);text-align:center}
+  .triangle-core b{color:var(--wine);font-size:14px}
+  .triangle-core span{max-width:16ch;margin-top:5px;color:var(--gray);font-size:12px;line-height:1.4}
 
   .audiences{display:grid;grid-template-columns:1fr 1fr;gap:54px}
-  .audience-label{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--wine);margin-bottom:12px}
   .audience h2{font-size:30px;line-height:1.1;letter-spacing:-.025em;margin:0 0 15px}
+  .audience h2 span{color:var(--wine)}
   .audience>p{font-size:15px;line-height:1.65;color:var(--gray);margin:0 0 24px}
   .promises{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
   .promises li{padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5;font-weight:600}
@@ -178,10 +187,9 @@
     .nav .tel,.nav .cbox{display:none}
     .chat{padding:0;width:52px;height:52px;justify-content:center;gap:0}
     .chat .chat-txt{display:none}
-    .bridge{grid-template-columns:1fr}
-    .bridge-center{order:-1;min-height:150px}
-    .bridge-side,.bridge-side:last-child{text-align:left;padding:24px 0}
-    .bridge-side:last-child p{margin-left:0}
+    .triangle-layout{grid-template-columns:1fr;gap:28px}
+    .triangle-copy h2{max-width:15ch}
+    .triangle-diagram{min-height:470px}
     .audiences{grid-template-columns:1fr;gap:42px}
     .process{grid-template-columns:1fr 1fr}
     .process-step:nth-child(2){border-right:0}
@@ -194,6 +202,12 @@
     .nav .tel{font-size:12px}
     .process{grid-template-columns:1fr}
     .process-step,.process-step:not(:first-child){padding:18px 0;border-right:0;border-top:1px solid var(--line);min-height:0}
+    .triangle-diagram{min-height:430px}
+    .triangle-node{width:43%;padding:12px}
+    .triangle-node b{font-size:17px}
+    .triangle-node span{font-size:11.5px}
+    .triangle-core{top:52%;width:132px;min-height:132px;padding:12px}
+    .triangle-core span{font-size:11px;max-width:13ch}
   }
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
 </style>
@@ -272,18 +286,25 @@
 <!-- ПОЗИЦИЯ АГЕНТСТВА -->
 <section class="block first" id="position">
   <div class="wrap reveal">
-    <div class="bridge">
-      <div class="bridge-side">
-        <h2>Актер</h2>
-        <p>Карьера, цели, ставка, творческая задача и условия работы.</p>
+    <div class="triangle-layout">
+      <div class="triangle-copy">
+        <h2>Три стороны одной работы</h2>
+        <p><strong>Актер, агентство и индустрия связаны напрямую.</strong> Наша задача - сделать эти связи понятными: согласовать цели актера с реальностью проекта, договориться об условиях и отвечать за обещания с обеих сторон.</p>
       </div>
-      <div class="bridge-center">
-        <b>GRECHISHKINO</b>
-        <span>Представляем интересы актера.<br>Понимаем интересы индустрии.<br>Помогаем договориться.</span>
-      </div>
-      <div class="bridge-side">
-        <h2>Индустрия</h2>
-        <p>Роль, бюджет, сроки, график, обязательства и результат.</p>
+      <div class="triangle-diagram" role="img" aria-label="Треугольник партнерства: индустрия, агентство Grechishkino и актер связаны доверием и договоренностями">
+        <svg class="triangle-lines" viewBox="0 0 640 430" aria-hidden="true">
+          <path d="M320 38 72 376 568 376Z"></path>
+          <path d="M311 50 84 359"></path>
+          <path d="M329 50 556 359"></path>
+          <path d="M91 376H549"></path>
+          <circle cx="320" cy="38" r="5"></circle>
+          <circle cx="72" cy="376" r="5"></circle>
+          <circle cx="568" cy="376" r="5"></circle>
+        </svg>
+        <div class="triangle-node triangle-node--industry"><b>Индустрия</b><span>Роль, бюджет, сроки и результат</span></div>
+        <div class="triangle-node triangle-node--agency"><b>Grechishkino</b><span>Стратегия, переговоры и сопровождение</span></div>
+        <div class="triangle-node triangle-node--actor"><b>Актер</b><span>Творческая задача, карьера и условия</span></div>
+        <div class="triangle-core"><b>Доверие</b><span>Единые договоренности и ответственность</span></div>
       </div>
     </div>
   </div>
@@ -294,8 +315,7 @@
   <div class="wrap reveal">
     <div class="audiences">
       <div class="audience" id="actor">
-        <div class="audience-label">Актеру</div>
-        <h2>Трезвый взгляд и опора в профессии</h2>
+        <h2><span>Актеру:</span> трезвый взгляд и опора в профессии</h2>
         <p>Мы не играем роль "мамы-агента". Это партнерская работа, где у актера есть цели и ответственность, а у агентства - экспертиза, переговорная позиция и ежедневное сопровождение.</p>
         <ul class="promises">
           <li>Стратегия карьеры и выбор проектов</li>
@@ -305,8 +325,7 @@
         </ul>
       </div>
       <div class="audience" id="industry">
-        <div class="audience-label">Индустрии</div>
-        <h2>Предсказуемый партнер по проекту</h2>
+        <h2><span>Индустрии:</span> предсказуемый партнер по проекту</h2>
         <p>Мы предлагаем актеров точно под задачу, знаем их актуальные ставки, графики и возможности и быстро снимаем организационные вопросы с команды проекта.</p>
         <ul class="promises">
           <li>Быстрый ответ и актуальные материалы</li>
@@ -350,7 +369,7 @@
     <div class="f-mid">
       <div class="f-brand">
         <div class="f-logo">GRECHISHKINO</div>
-        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео-визитки, фото-образы, фильмография.</p>
+        <p>Актерское агентство, Москва. 16 актеров кино и сериалов: видео, фотографии, фильмография.</p>
       </div>
       <div class="f-col">
         <div class="f-k">Разделы</div>
@@ -376,8 +395,7 @@
       </div>
     </div>
     <div class="f-legal">
-      <!-- TODO: реальные ИНН/ОГРНИП взять у Ирины -->
-      <span>ИП Гречишкина Ирина Васильевна · ИНН 000000000000 · ОГРНИП 000000000000000</span>
+      <span>ИП Гречишкина Ирина Васильевна · ИНН 774320736778 · ОГРНИП 318774600031791</span>
       <span><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку ПД</a></span>
       <span>* Instagram - продукт Meta, признанной экстремистской и запрещенной в РФ</span>
       <span>© 2026 Актерское агентство "Гречишкино"</span>
