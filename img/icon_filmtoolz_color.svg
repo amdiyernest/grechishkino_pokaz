@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- FilmToolz: фирменный синий (#3B5BC7, по логотипу с их сайта) -->
+  <rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="#3B5BC7"/>
+  <!-- плёночная лента сверху (наклонная), как в оригинальной иконке -->
+  <g transform="rotate(-18 12 7)">
+    <rect x="4" y="5.1" width="16" height="3.4" rx="1" fill="#fff"/>
+    <rect x="5.4" y="5.7" width="1.5" height="1" rx=".3" fill="#3B5BC7"/>
+    <rect x="8.1" y="5.7" width="1.5" height="1" rx=".3" fill="#3B5BC7"/>
+    <rect x="10.8" y="5.7" width="1.5" height="1" rx=".3" fill="#3B5BC7"/>
+    <rect x="13.5" y="5.7" width="1.5" height="1" rx=".3" fill="#3B5BC7"/>
+    <rect x="16.2" y="5.7" width="1.5" height="1" rx=".3" fill="#3B5BC7"/>
+  </g>
+  <!-- буква Z -->
+  <path d="M7.8 11.4 h8.4 v1.9 l-5.3 4.9 h5.3 v2.1 H7.6 v-1.9 l5.3-4.9 H7.8 Z" fill="#fff"/>
+</svg>
