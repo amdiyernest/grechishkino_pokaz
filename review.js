@@ -67,6 +67,33 @@
   on('.film-row', 'focus', el => el.dispatchEvent(new MouseEvent('mouseenter')))
   on('.film-toggle', 'click', el => { const open = $('.film-list').classList.toggle('open'); el.dataset.original ||= el.textContent; el.textContent = open ? 'Свернуть' : el.dataset.original })
   let video = 0
+  const videoCarousel = $('.profile-video-carousel')
+  const videoList = $('.profile-video-list')
+  const scrollBehavior = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+  const syncVideoStrip = () => {
+    if (!videoCarousel || !videoList) return
+    const overflow = videoList.scrollWidth > videoCarousel.clientWidth + 1
+    videoCarousel.classList.toggle('is-scrollable', overflow)
+    $$('.video-scroll', videoCarousel).forEach(b => {
+      b.hidden = !overflow
+      b.disabled = b.classList.contains('previous') ? videoList.scrollLeft <= 1 : videoList.scrollLeft + videoList.clientWidth >= videoList.scrollWidth - 1
+    })
+  }
+  const revealVideo = () => {
+    const choice = videoList?.children[video]
+    if (!choice) return
+    const left = choice.getBoundingClientRect().left - videoList.getBoundingClientRect().left + videoList.scrollLeft
+    const right = left + choice.offsetWidth
+    if (left < videoList.scrollLeft) videoList.scrollTo({ left: left - 4, behavior: scrollBehavior() })
+    else if (right > videoList.scrollLeft + videoList.clientWidth) videoList.scrollTo({ left: right - videoList.clientWidth + 4, behavior: scrollBehavior() })
+  }
+  if (videoList && videoCarousel) {
+    const observer = new ResizeObserver(syncVideoStrip)
+    observer.observe(videoCarousel); observer.observe(videoList)
+    videoList.addEventListener('scroll', syncVideoStrip, { passive: true })
+    syncVideoStrip()
+  }
+  on('.video-scroll', 'click', el => videoList?.scrollBy({ left: (el.classList.contains('previous') ? -1 : 1) * videoList.clientWidth, behavior: scrollBehavior() }))
   const chooseVideo = () => {
     const v = page.videos?.[video]; if (!v) return
     const current = $('.profile-video .vmain'); if (!current) return
@@ -77,6 +104,7 @@
     a.onclick = e => { if (!v.embed) return; e.preventDefault(); const frame = document.createElement('iframe'); frame.src = v.embed; frame.title = v.title; frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture'; frame.allowFullscreen = true; const holder = document.createElement('div'); holder.className = 'vmain is-playing'; holder.append(frame); a.replaceWith(holder) }
     current.replaceWith(a)
     $$('.video-choice').forEach((b, i) => { b.classList.toggle('on', i === video); b.setAttribute('aria-pressed', String(i === video)) })
+    syncVideoStrip(); revealVideo()
   }
   if (page.videos?.length) { const initial = Number(new URLSearchParams(location.search).get('video')) - 1; if (initial >= 0 && initial < page.videos.length) video = initial; chooseVideo() }
   on('.video-choice', 'click', el => { video = $$('.video-choice').indexOf(el); chooseVideo() })
