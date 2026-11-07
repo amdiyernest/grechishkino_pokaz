@@ -1,0 +1,209 @@
+.profile-intro {
+  display: grid;
+  grid-template-columns: minmax(330px, .82fr) minmax(520px, 1.18fr);
+  align-items: start;
+  gap: clamp(42px, 6vw, 88px);
+  padding-block: clamp(40px, 5vw, 72px);
+}
+
+.profile-portrait {
+  width: min(100%, 500px);
+  height: auto;
+  aspect-ratio: 2/3;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 4px;
+}
+
+.profile-copy h1 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(3.4rem, 5.6vw, 5.4rem);
+  line-height: .94;
+  letter-spacing: -.04em;
+}
+
+.profile-copy h1 span { color: var(--wine); }
+.profile-summary { max-width: 62ch; margin-top: 22px; color: var(--gray); font-size: 1rem; line-height: 1.65; }
+
+.profile-video { margin-top: 30px; scroll-margin-top: 132px; }
+.profile-video-head { min-height: 40px; display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.profile-video-head h2 { margin: 0 auto 0 0; font-size: 1.05rem; letter-spacing: -.01em; }
+.video-share {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--paper);
+  font: 700 .78rem/1 inherit;
+  cursor: pointer;
+  transition: border-color .16s, color .16s, background .16s;
+}
+.video-share svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.video-share:hover { border-color: var(--wine); color: var(--wine); }
+.video-share:focus-visible { outline: 3px solid rgba(137,15,48,.24); outline-offset: 2px; }
+.video-share.is-copied { border-color: var(--wine); color: var(--wine); background: rgba(137,15,48,.06); }
+.share-status { min-width: 0; color: var(--wine); font-size: .75rem; font-weight: 700; }
+.profile-video .vmain { margin: 0; aspect-ratio: 16/8.4; border-radius: 4px; box-shadow: none; }
+.profile-video-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+
+.profile-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 18px;
+  margin-top: 38px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.profile-fact dt { color: var(--gray); font-size: .75rem; }
+.profile-fact dd { margin: 5px 0 0; font-size: .95rem; font-weight: 700; }
+.profile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+.profile-actions .btn { min-height: 48px; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 26px; }
+.profile-links a { display: inline-flex; align-items: center; gap: 7px; color: var(--gray); font-size: .82rem; font-weight: 650; text-decoration: none; }
+.profile-links a:hover { color: var(--wine); }
+.profile-links img, .profile-links svg { width: 15px; height: 15px; flex: 0 0 auto; }
+
+.profile-jump-nav {
+  position: sticky;
+  top: 72px;
+  z-index: 35;
+  border-block: 1px solid var(--line);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+}
+.profile-jump-nav .wrap { display: flex; gap: clamp(20px, 4vw, 48px); overflow-x: auto; scrollbar-width: none; }
+.profile-jump-nav .wrap::-webkit-scrollbar { display: none; }
+.profile-jump-nav a {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--gray);
+  font-size: .82rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.profile-jump-nav a:hover { color: var(--wine); }
+#photos, #video, #filmography, #actor-news, #contact { scroll-margin-top: 128px; }
+
+.profile-gallery { padding: 8px; background: var(--paper); }
+.profile-gallery .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.profile-gallery figure { margin: 0; aspect-ratio: 2/3; overflow: hidden; border-radius: 0 !important; background: var(--soft); cursor: zoom-in; }
+.profile-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s cubic-bezier(.2,.8,.2,1); }
+.profile-gallery figure:hover img { transform: scale(1.018) !important; }
+
+.video-choice {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 2px 8px;
+  align-items: baseline;
+  min-height: 56px;
+  padding: 10px 4px 8px 0;
+  color: var(--gray);
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  aspect-ratio: auto;
+  transform: none;
+  background: transparent !important;
+}
+.video-choice b { position: static; min-width: 0; color: var(--ink); font-size: .78rem; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.video-choice span:first-child { font-variant-numeric: tabular-nums; }
+.video-choice small { grid-column: 2; font-size: .7rem; }
+.video-choice:hover,
+.video-choice.on { color: var(--wine); border-top-color: var(--wine); }
+.video-choice.on b { color: var(--wine); }
+
+.gtools { min-height: 76px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px 20px; color: #fff; }
+.gstep { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; color: #fff; background: transparent; cursor: pointer; }
+.gstep svg, .gdownload svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.gstep:hover, .gstep:focus-visible { border-color: #fff; background: rgba(255,255,255,.1); }
+.gcount { min-width: 58px; text-align: center; color: rgba(255,255,255,.72); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.gdownload { min-height: 42px; display: inline-flex; align-items: center; gap: 8px; margin-left: 8px; padding: 9px 14px; border: 1px solid rgba(255,255,255,.38); border-radius: 10px; color: #fff; font-size: .8rem; font-weight: 750; text-decoration: none; }
+.gdownload:hover, .gdownload:focus-visible { border-color: #fff; background: rgba(255,255,255,.1); }
+
+.role-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 8px; background: var(--paper); }
+.role-strip figure { margin: 0; aspect-ratio: 2/3; overflow: hidden; background: var(--soft); }
+.role-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.film-editorial { padding-block: clamp(76px, 10vw, 140px); }
+.film-editorial h2 { margin: 0 0 44px; font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: .96; letter-spacing: -.04em; }
+.film-layout { display: grid; grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr); gap: clamp(46px, 8vw, 120px); align-items: start; }
+.film-preview { position: sticky; top: 104px; }
+.film-preview img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; border-radius: 3px; background: var(--soft); }
+.film-preview p { margin-top: 14px; color: var(--gray); font-size: .78rem; }
+.film-list { border-top: 1px solid var(--ink); }
+.film-row {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr) minmax(120px, .65fr);
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+}
+.film-row:hover .film-name,
+.film-row:focus-visible .film-name { color: var(--wine); }
+.film-year { color: var(--gray); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.film-name { font-size: 1.08rem; font-weight: 750; transition: color .16s; }
+.film-meta { color: var(--gray); font-size: .82rem; line-height: 1.55; }
+.film-meta strong { color: var(--ink); font-weight: 800; }
+.film-status { display: block; margin-top: 5px; color: var(--wine); font-size: .72rem; font-weight: 750; }
+.film-toggle { margin-top: 24px; }
+.film-row.is-hidden { display: none; }
+.film-list.open .film-row.is-hidden { display: grid; }
+
+.role-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 8px; }
+.role-gallery figure { margin: 0; aspect-ratio: 2/3; overflow: hidden; background: var(--soft); }
+.role-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+#actor-news, #more { border-top: 1px solid var(--line); }
+#actor-news .newsgrid { gap: 24px; }
+#more .xsell { gap: 8px; }
+#more .acard { border-radius: 0 !important; }
+
+@media (max-width: 900px) {
+  .profile-jump-nav { top: 64px; }
+  .profile-intro { min-height: 0; grid-template-columns: 1fr; gap: 34px; padding-block: 28px 58px; }
+  .profile-portrait { justify-self: center; }
+  .profile-copy h1 { font-size: clamp(3rem, 12vw, 5.4rem); }
+  .profile-facts { grid-template-columns: repeat(2, 1fr); }
+  .profile-video-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .film-layout { grid-template-columns: 1fr; gap: 36px; }
+  .film-preview { position: static; }
+  .film-preview img { max-height: 72svh; aspect-ratio: 4/5; }
+}
+
+@media (max-width: 620px) {
+  .profile-intro { padding-top: 18px; }
+  .profile-portrait { width: 100%; }
+  .profile-summary { margin-top: 20px; }
+  .profile-facts { gap: 12px 18px; margin-top: 28px; }
+  .profile-gallery .gallery { grid-template-columns: 1fr 1fr; gap: 4px; }
+  .profile-gallery, .role-strip, .role-gallery { padding: 4px; gap: 4px; }
+  .profile-video-head { flex-wrap: wrap; }
+  .share-status { order: 3; flex-basis: 100%; }
+  .video-share { min-height: 44px; }
+  .video-choice { grid-template-columns: 28px 1fr; min-height: 58px; }
+  .gtools { justify-content: flex-start; padding-inline: 16px; }
+  .gdownload { margin-left: auto; }
+  .role-strip { grid-template-columns: 1fr 1fr; }
+  .film-row { grid-template-columns: 48px 1fr; gap: 8px 12px; }
+  .film-meta { grid-column: 2; }
+  .role-gallery { grid-template-columns: 1fr 1fr; }
+}
